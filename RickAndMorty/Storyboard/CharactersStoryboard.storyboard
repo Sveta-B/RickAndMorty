@@ -48,7 +48,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="qWL-H3-kCJ">
             <objects>
-                <navigationController storyboardIdentifier="NavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQl-HH-Gd3" customClass="NavigationViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CharactersNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQl-HH-Gd3" customClass="NavigationViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0Sw-rA-Mzm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

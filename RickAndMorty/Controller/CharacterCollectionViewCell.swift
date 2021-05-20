@@ -10,8 +10,7 @@ import UIKit
 class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     
@@ -19,5 +18,4 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
        
     }
-    
 }

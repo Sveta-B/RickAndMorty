@@ -22,15 +22,17 @@ struct NetworkManager {
     
     func getData(nameSection: Sections, completionHandler: @escaping (CharacterData ) -> Void) {
   let urlString = "https://rickandmortyapi.com/api/\(nameSection)"
+        print(urlString)
         guard  let url = URL(string: urlString) else {
             print("error url")
             return
         }
         let session = URLSession(configuration: .default)
-           let dataTask = session.dataTask(with: url) {(data, response, error) in
+        let dataTask = session.dataTask(with: url) {(data, response, error) in
             if let data = data {
                 if let characters = self.parseJSON(withData: data) {
                     completionHandler(characters)
+                    print(characters.info.count)
                 }
                 }
 }

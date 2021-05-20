@@ -9,18 +9,12 @@ import UIKit
 
 
 
-class ChooseSectionCollectionViewController: UICollectionViewController {
+class ChooseSectionCollectionViewController: ParentCollectionViewController {
     private let reuseIdentifier = "SectionCollectionViewCell"
-    var wightScreen = CGFloat()
-    var hightScreen = CGFloat()
     let sections = [Section(name: "Characters", image: "characters"), Section(name: "Locations", image: "locations"), Section(name: "Episodes", image: "episodes")]
  
     override func viewDidLoad() {
         super.viewDidLoad()
-         wightScreen = view.bounds.size.width
-         hightScreen = view.bounds.size.height
-       let layout = UICollectionViewFlowLayout()
-        collectionView.collectionViewLayout = layout
     }
 
     // MARK: - UICollectionViewDataSource
@@ -45,18 +39,19 @@ class ChooseSectionCollectionViewController: UICollectionViewController {
         collectionView.deselectItem(at: indexPath, animated: true)
         
         print("You taped on \(indexPath)")
-        
         switch indexPath {
         case [0, 0]:
-            changeSection()
+            changeSection(nameStoryboard: "CharactersStoryboard", idVC: "CharactersNavigationViewController")
+        case [0, 1]:
+        changeSection(nameStoryboard: "LocationsStoryboard", idVC: "LocationsNavigationViewController")
         default:
             print("no sb")
         }
     }
     
-    func changeSection() {
-    let storyboard = UIStoryboard(name: "CharactersStoryboard", bundle: nil)
-    guard let secondViewController = storyboard.instantiateViewController(identifier: "NavigationViewController") as? NavigationViewController else { return }
+    func changeSection(nameStoryboard: String,  idVC: String) {
+    let storyboard = UIStoryboard(name: nameStoryboard, bundle: nil)
+        guard let secondViewController = storyboard.instantiateViewController(identifier: idVC)  as? NavigationViewController else { return }
        // navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.modalPresentationStyle = .fullScreen
         show(secondViewController, sender: nil)
@@ -64,23 +59,11 @@ class ChooseSectionCollectionViewController: UICollectionViewController {
         
         //present(secondViewController, animated: true, completion: nil)
     }
-}
-
-extension ChooseSectionCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
+    
+   override func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
         let hight = (Int(hightScreen) - Int(Constants.minimumSpacing) * 5 - Constants.hightTabBar) / 3
         let wight = Int(wightScreen) - Int(Constants.minimumSpacing) * 2
        return CGSize(width: wight, height: hight)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.minimumSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        var insets = UIEdgeInsets()
-        insets.top = Constants.minimumSpacing
-        return insets
-    }
-
 }
+

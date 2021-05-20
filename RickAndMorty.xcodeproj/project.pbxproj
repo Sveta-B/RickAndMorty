@@ -18,6 +18,9 @@
 		3FCFB76026527FB8006F473A /* ChooseSectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFB75F26527FB8006F473A /* ChooseSectionCollectionViewController.swift */; };
 		3FCFB76326528C9C006F473A /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFB76226528C9C006F473A /* NavigationViewController.swift */; };
 		3FCFB76C265290DB006F473A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFB76B265290DB006F473A /* Section.swift */; };
+		3FD644452656D21500B0B5C1 /* ParentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD644442656D21500B0B5C1 /* ParentCollectionViewController.swift */; };
+		3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */; };
+		3FD6444B2656DA3100B0B5C1 /* LocationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */; };
 		3FE9CB53265274F700401829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9CB52265274F700401829 /* AppDelegate.swift */; };
 		3FE9CB55265274F700401829 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9CB54265274F700401829 /* SceneDelegate.swift */; };
 		3FE9CB5A265274F700401829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE9CB58265274F700401829 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 		3FCFB75F26527FB8006F473A /* ChooseSectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSectionCollectionViewController.swift; sourceTree = "<group>"; };
 		3FCFB76226528C9C006F473A /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		3FCFB76B265290DB006F473A /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		3FD644442656D21500B0B5C1 /* ParentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCollectionViewController.swift; sourceTree = "<group>"; };
+		3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationsStoryboard.storyboard; sourceTree = "<group>"; };
+		3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCollectionViewController.swift; sourceTree = "<group>"; };
 		3FE9CB4F265274F700401829 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE9CB52265274F700401829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FE9CB54265274F700401829 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			children = (
 				3FE9CB58265274F700401829 /* Main.storyboard */,
 				3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */,
+				3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -72,11 +79,13 @@
 			isa = PBXGroup;
 			children = (
 				3FCFB76226528C9C006F473A /* NavigationViewController.swift */,
+				3FD644442656D21500B0B5C1 /* ParentCollectionViewController.swift */,
 				3FCFB75F26527FB8006F473A /* ChooseSectionCollectionViewController.swift */,
 				3FC696B72652E3B0000881F2 /* SectionCollectionViewCell.swift */,
 				3FC6974126544A9C000881F2 /* CharactersCollectionViewController.swift */,
 				3FC6974426544BD4000881F2 /* CharacterCollectionViewCell.swift */,
 				3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */,
+				3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +192,7 @@
 			files = (
 				3F6A8D2426566CF800457894 /* CharactersStoryboard.storyboard in Resources */,
 				3FE9CB5F265274F800401829 /* LaunchScreen.storyboard in Resources */,
+				3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */,
 				3FE9CB5C265274F800401829 /* Assets.xcassets in Resources */,
 				3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */,
 				3FE9CB5A265274F700401829 /* Main.storyboard in Resources */,
@@ -203,11 +213,13 @@
 				3FC696B82652E3B0000881F2 /* SectionCollectionViewCell.swift in Sources */,
 				3FE9CB6A26527D2400401829 /* CharacterData.swift in Sources */,
 				3FCFB76026527FB8006F473A /* ChooseSectionCollectionViewController.swift in Sources */,
+				3FD644452656D21500B0B5C1 /* ParentCollectionViewController.swift in Sources */,
 				3FC697392653E73B000881F2 /* NetworkManager.swift in Sources */,
 				3FCFB76C265290DB006F473A /* Section.swift in Sources */,
 				3FE9CB53265274F700401829 /* AppDelegate.swift in Sources */,
 				3FE9CB55265274F700401829 /* SceneDelegate.swift in Sources */,
 				3F6A8D27265670AF00457894 /* Constants.swift in Sources */,
+				3FD6444B2656DA3100B0B5C1 /* LocationsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

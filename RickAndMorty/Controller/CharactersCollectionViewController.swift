@@ -11,14 +11,13 @@ class CharactersCollectionViewController: ParentCollectionViewController {
 
     var characters: [Result]?
     var filterCharacters: [Result]?
-    private let reuseIdentifier = "CharactersCell"
     var networkManager = NetworkManager()
     var countItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         filterCharacters = characters
-        collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
         createSearchBar()
         networkManager.getData(nameSection: .character) {[weak self] (characterData) in
             self?.characters = characterData.results
@@ -54,7 +53,7 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
         DispatchQueue.main.async {
             print(indexPath.item)
             guard let myCharacters = self.characters else { return}

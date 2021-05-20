@@ -7,10 +7,7 @@
 
 import UIKit
 
-
-
 class ChooseSectionCollectionViewController: ParentCollectionViewController {
-    private let reuseIdentifier = "SectionCollectionViewCell"
     let sections = [Section(name: "Characters", image: "characters"), Section(name: "Locations", image: "locations"), Section(name: "Episodes", image: "episodes")]
  
     override func viewDidLoad() {
@@ -27,7 +24,7 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:Constants.ReuseIdentifier.SectionCollectionViewCell.rawValue, for: indexPath) as! SectionCollectionViewCell
         let  section = sections[indexPath.item]
         cell.nameSectionLabel.text = section.name
         cell.imageForSection.image = UIImage(named: section.image!)
@@ -41,9 +38,9 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
         print("You taped on \(indexPath)")
         switch indexPath {
         case [0, 0]:
-            changeSection(nameStoryboard: "CharactersStoryboard", idVC: "CharactersNavigationViewController")
+            changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersNavigationViewController.rawValue)
         case [0, 1]:
-        changeSection(nameStoryboard: "LocationsStoryboard", idVC: "LocationsNavigationViewController")
+            changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsNavigationViewController.rawValue)
         default:
             print("no sb")
         }
@@ -55,9 +52,6 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
        // navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.modalPresentationStyle = .fullScreen
         show(secondViewController, sender: nil)
-       
-        
-        //present(secondViewController, animated: true, completion: nil)
     }
     
    override func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {

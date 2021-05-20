@@ -15,9 +15,9 @@ enum Sections {
 
 struct NetworkManager {
     
-    let charactersURL = "https://rickandmortyapi.com/api/character"
-    let locationsURL =  "https://rickandmortyapi.com/api/location"
-    let episodesURL = "https://rickandmortyapi.com/api/episode"
+//    let charactersURL = "https://rickandmortyapi.com/api/character"
+//    let locationsURL =  "https://rickandmortyapi.com/api/location"
+//    let episodesURL = "https://rickandmortyapi.com/api/episode"
  
     
     func getData(nameSection: Sections, completionHandler: @escaping (CharacterData ) -> Void) {

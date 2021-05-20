@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ParentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var wightScreen = CGFloat()
     var hightScreen = CGFloat()
@@ -18,9 +16,7 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         hightScreen = view.bounds.size.height
       let layout = UICollectionViewFlowLayout()
        collectionView.collectionViewLayout = layout
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
-
 
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
         let hight = (Int(hightScreen) - Int(Constants.minimumSpacing) * 5 - (Constants.hightTabBar * 2)) / 3
@@ -39,23 +35,5 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         insets.right = Constants.minimumSpacing
         return insets
     }
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        return cell
-    }
-
-   
 
 }

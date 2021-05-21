@@ -7,13 +7,14 @@
 
 import UIKit
 
-class CharacterCollectionViewCell: UICollectionViewCell {
+class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+        indicator.startAnimating()
         imageView.contentMode = .scaleToFill
         contentView.layer.cornerRadius = 10
        

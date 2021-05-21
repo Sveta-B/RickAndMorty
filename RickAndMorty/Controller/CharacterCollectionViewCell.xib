@@ -17,6 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="439"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gNn-Bx-iqB">
+                        <rect key="frame" x="179" y="201" width="37" height="37"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9P-vE-YSY">
                         <rect key="frame" x="0.0" y="0.0" width="395" height="439"/>
                     </imageView>
@@ -39,6 +42,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="J9P-vE-YSY" secondAttribute="trailing" id="2VY-PT-Oko"/>
+                    <constraint firstItem="gNn-Bx-iqB" firstAttribute="centerX" secondItem="SUO-re-WSW" secondAttribute="centerX" id="41s-k3-zbJ"/>
+                    <constraint firstItem="gNn-Bx-iqB" firstAttribute="centerY" secondItem="SUO-re-WSW" secondAttribute="centerY" id="GWe-YB-yVc"/>
                     <constraint firstItem="CB6-Nh-prx" firstAttribute="height" secondItem="J9P-vE-YSY" secondAttribute="height" multiplier="0.346241" id="Gyi-yq-wAh"/>
                     <constraint firstItem="J9P-vE-YSY" firstAttribute="top" secondItem="SUO-re-WSW" secondAttribute="top" id="KAd-om-2AE"/>
                     <constraint firstAttribute="trailing" secondItem="CB6-Nh-prx" secondAttribute="trailing" id="KdS-BR-iaq"/>
@@ -51,6 +56,7 @@
             <size key="customSize" width="395" height="439"/>
             <connections>
                 <outlet property="imageView" destination="J9P-vE-YSY" id="YGA-Ry-DD9"/>
+                <outlet property="indicator" destination="gNn-Bx-iqB" id="OLO-n9-Trd"/>
                 <outlet property="nameLabel" destination="Lqc-hb-dW4" id="ruE-aE-LGO"/>
             </connections>
             <point key="canvasLocation" x="-407.97101449275368" y="23.772321428571427"/>

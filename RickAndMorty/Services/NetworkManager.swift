@@ -7,21 +7,16 @@
 
 import Foundation
 
-enum Sections {
+enum Sections {    
     case character
     case location
     case episode
 }
 
 struct NetworkManager {
-    
-//    let charactersURL = "https://rickandmortyapi.com/api/character"
-//    let locationsURL =  "https://rickandmortyapi.com/api/location"
-//    let episodesURL = "https://rickandmortyapi.com/api/episode"
  
-    
-    func getData(nameSection: Sections, number: Int, completionHandler: @escaping (CharacterData ) -> Void) {
-  let urlString = "https://rickandmortyapi.com/api/\(nameSection)?page=\(number)"
+    func getData(nameSection: Sections, PageNumber: Int, completionHandler: @escaping (CharacterData ) -> Void) {
+  let urlString = "https://rickandmortyapi.com/api/\(nameSection)?page=\(PageNumber)"
         guard  let url = URL(string: urlString) else {
             print("error url")
             return

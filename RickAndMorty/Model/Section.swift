@@ -10,6 +10,4 @@ import Foundation
 struct Section {
     let name: String
     let image: String?
-    
-  
 }

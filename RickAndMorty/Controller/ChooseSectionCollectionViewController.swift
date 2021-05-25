@@ -24,7 +24,7 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:Constants.ReuseIdentifier.SectionCollectionViewCell.rawValue, for: indexPath) as! SectionCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:Constants.ReuseIdentifier.SectionCollectionViewCell.rawValue, for: indexPath) as! SectionCollectionViewCell 
         let  section = sections[indexPath.item]
         cell.nameSectionLabel.text = section.name
         cell.imageForSection.image = UIImage(named: section.image!)

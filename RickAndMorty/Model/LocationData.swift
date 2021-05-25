@@ -15,7 +15,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct LocationData: Codable {
     let info: Info
     let results: [Result]
     

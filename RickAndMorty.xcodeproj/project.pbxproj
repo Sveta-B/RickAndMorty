@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F6A8D192655988A00457894 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A8D182655988A00457894 /* Character.swift */; };
 		3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */; };
 		3F6A8D2426566CF800457894 /* CharactersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */; };
 		3F6A8D27265670AF00457894 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A8D26265670AF00457894 /* Constants.swift */; };
-		3F89340D2657D456008EBC16 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89340C2657D456008EBC16 /* Location.swift */; };
-		3F931C27265C385B004C8081 /* Tect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F931C26265C385B004C8081 /* Tect.swift */; };
 		3FC696B82652E3B0000881F2 /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC696B72652E3B0000881F2 /* SectionCollectionViewCell.swift */; };
 		3FC697392653E73B000881F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC697382653E73B000881F2 /* NetworkManager.swift */; };
 		3FC6974226544A9C000881F2 /* CharactersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6974126544A9C000881F2 /* CharactersCollectionViewController.swift */; };
@@ -24,8 +21,8 @@
 		3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */; };
 		3FD6444B2656DA3100B0B5C1 /* LocationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */; };
 		3FD6444E2656DF8B00B0B5C1 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6444D2656DF8B00B0B5C1 /* LocationData.swift */; };
+		3FD7870A265D04C100520A05 /* DetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD78709265D04C100520A05 /* DetailsStoryboard.storyboard */; };
 		3FDEE737265ACE8000B6372F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEE735265ACE8000B6372F /* DetailsViewController.swift */; };
-		3FDEE738265ACE8000B6372F /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FDEE736265ACE8000B6372F /* DetailsViewController.xib */; };
 		3FE9CB53265274F700401829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9CB52265274F700401829 /* AppDelegate.swift */; };
 		3FE9CB55265274F700401829 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9CB54265274F700401829 /* SceneDelegate.swift */; };
 		3FE9CB5A265274F700401829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE9CB58265274F700401829 /* Main.storyboard */; };
@@ -35,12 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F6A8D182655988A00457894 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersStoryboard.storyboard; sourceTree = "<group>"; };
 		3F6A8D26265670AF00457894 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3F89340C2657D456008EBC16 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		3F931C26265C385B004C8081 /* Tect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tect.swift; sourceTree = "<group>"; };
 		3FC696B72652E3B0000881F2 /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FC697382653E73B000881F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3FC6974126544A9C000881F2 /* CharactersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewController.swift; sourceTree = "<group>"; };
@@ -52,8 +46,8 @@
 		3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationsStoryboard.storyboard; sourceTree = "<group>"; };
 		3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCollectionViewController.swift; sourceTree = "<group>"; };
 		3FD6444D2656DF8B00B0B5C1 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		3FD78709265D04C100520A05 /* DetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsStoryboard.storyboard; sourceTree = "<group>"; };
 		3FDEE735265ACE8000B6372F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		3FDEE736265ACE8000B6372F /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		3FE9CB4F265274F700401829 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE9CB52265274F700401829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FE9CB54265274F700401829 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				3FC697382653E73B000881F2 /* NetworkManager.swift */,
-				3F931C26265C385B004C8081 /* Tect.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -110,6 +103,7 @@
 				3FE9CB58265274F700401829 /* Main.storyboard */,
 				3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */,
 				3FD644472656D9C700B0B5C1 /* LocationsStoryboard.storyboard */,
+				3FD78709265D04C100520A05 /* DetailsStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -121,7 +115,6 @@
 				3FC6974126544A9C000881F2 /* CharactersCollectionViewController.swift */,
 				3FD6444A2656DA3100B0B5C1 /* LocationsCollectionViewController.swift */,
 				3FDEE735265ACE8000B6372F /* DetailsViewController.swift */,
-				3FDEE736265ACE8000B6372F /* DetailsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,9 +158,7 @@
 			children = (
 				3FE9CB6926527D2400401829 /* CharacterData.swift */,
 				3FCFB76B265290DB006F473A /* Section.swift */,
-				3F6A8D182655988A00457894 /* Character.swift */,
 				3FD6444D2656DF8B00B0B5C1 /* LocationData.swift */,
-				3F89340C2657D456008EBC16 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,8 +220,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FDEE738265ACE8000B6372F /* DetailsViewController.xib in Resources */,
 				3F6A8D2426566CF800457894 /* CharactersStoryboard.storyboard in Resources */,
+				3FD7870A265D04C100520A05 /* DetailsStoryboard.storyboard in Resources */,
 				3FE9CB5F265274F800401829 /* LaunchScreen.storyboard in Resources */,
 				3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */,
 				3FE9CB5C265274F800401829 /* Assets.xcassets in Resources */,
@@ -248,14 +239,11 @@
 			files = (
 				3FC6974526544BD4000881F2 /* CharacterCollectionViewCell.swift in Sources */,
 				3FC6974226544A9C000881F2 /* CharactersCollectionViewController.swift in Sources */,
-				3F89340D2657D456008EBC16 /* Location.swift in Sources */,
-				3F6A8D192655988A00457894 /* Character.swift in Sources */,
 				3FCFB76326528C9C006F473A /* NavigationViewController.swift in Sources */,
 				3FC696B82652E3B0000881F2 /* SectionCollectionViewCell.swift in Sources */,
 				3FE9CB6A26527D2400401829 /* CharacterData.swift in Sources */,
 				3FCFB76026527FB8006F473A /* ChooseSectionCollectionViewController.swift in Sources */,
 				3FD644452656D21500B0B5C1 /* ParentCollectionViewController.swift in Sources */,
-				3F931C27265C385B004C8081 /* Tect.swift in Sources */,
 				3FC697392653E73B000881F2 /* NetworkManager.swift in Sources */,
 				3FDEE737265ACE8000B6372F /* DetailsViewController.swift in Sources */,
 				3FD6444E2656DF8B00B0B5C1 /* LocationData.swift in Sources */,

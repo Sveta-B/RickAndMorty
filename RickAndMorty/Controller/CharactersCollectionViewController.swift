@@ -9,7 +9,9 @@ import UIKit
 
 class CharactersCollectionViewController: ParentCollectionViewController {
     var countItem = 0
-    var characters: [Result]? {
+    var countRows: Int?
+    var pagesCount = 1
+    var characters: [Character]? {
         willSet {
             if (newValue != nil) {
                 countItem = newValue!.count
@@ -17,7 +19,7 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         }
     }
     var networkManager = NetworkManager()
-   private var filterCharacters: [Result]?
+   private var filterCharacters: [Character]?
    private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else {
@@ -35,10 +37,16 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         filterCharacters = characters
         collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
       createSearchController()
-        networkManager.getData(nameSection: .character, PageNumber: 1) {[weak self] (characterData) in
+        networkManager.getData(nameSection: .character, pageNumber: pagesCount) {[weak self] (result) in
+            switch result {
+            case .success(let characterData) :
+                self?.countRows =  characterData.info.count
+            self?.pagesCount = characterData.info.pages
             self?.characters = characterData.results
+            case .failure(let error):
+                print(error)
+            }
         }
-       countItem =  self.characters?.count ?? 0
     }
     
     @IBAction func filter(_ sender: Any) {
@@ -60,28 +68,21 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isFiltering {
-            return filterCharacters!.count
-        }
-        
-        return 671
+        guard let count = countRows else { return 20 }
+      return count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
-        var count  = 0
         DispatchQueue.main.async {
             guard let myCharacters = self.characters else { return}
                 cell.nameLabel.text = myCharacters[indexPath.item].name
-            print(myCharacters[indexPath.item].id)
-            
-            count += 1
                 guard  let stringForImage = self.characters?[indexPath.item].image else { return}
                 guard let url = URL(string: stringForImage) else { return}
             guard  let data = try? Data(contentsOf: url) else {return}
             cell.imageView.image = UIImage(data: data)
         }
-        print(count)
+        
         return cell
     }
     
@@ -91,16 +92,32 @@ class CharactersCollectionViewController: ParentCollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        for i in 2...34 {
-        if indexPath.row > countItem - 8 {
+        for i in 2...pagesCount {
+            if indexPath.row > countItem - 8 {
            
-                networkManager.getData(nameSection: .character, PageNumber: i)  {[weak self] (characterData) in
+            networkManager.getData(nameSection: .character, pageNumber: i)  {[weak self] (result) in
+                switch result {
+                case .success(let characterData):
                 self?.characters? += characterData.results
-                
+                case .failure(let error):
+                    print(error)
+                }
                 }
                 }
     }
 }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let  character  = self.characters?[indexPath.item] {
+           
+        let storyboard = UIStoryboard(name: "DetailsStoryboard", bundle: nil)
+        guard let secondViewController = storyboard.instantiateViewController(identifier: "DetailsStoryboard")  as? DetailsViewController else { return }
+            secondViewController.modalPresentationStyle = .fullScreen
+            show(secondViewController, sender: nil)
+            secondViewController.character = character
+        }
+        
+    }
 }
 
 extension CharactersCollectionViewController: UISearchResultsUpdating {
@@ -108,7 +125,7 @@ extension CharactersCollectionViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchController.searchBar.text!)
     }
     private func filterContentForSearchText(_ searchText: String) {
-        filterCharacters = characters?.filter({ (characters: Result) -> Bool in
+        filterCharacters = characters?.filter({ (characters: Character) -> Bool in
             return characters.name.lowercased().contains(searchText.lowercased())
         })
         collectionView.reloadData()

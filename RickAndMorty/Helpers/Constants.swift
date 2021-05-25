@@ -13,10 +13,12 @@ struct Constants {
     enum Storyboards: String{
         case CharactersStoryboard
         case LocationsStoryboard
+        case DetailsStoryboard
     }
     enum IdRootViewControllers: String {
         case LocationsNavigationViewController
         case CharactersNavigationViewController
+        case DetailsNavigationViewController
     }
     
     enum ReuseIdentifier: String {

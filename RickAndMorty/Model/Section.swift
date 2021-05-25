@@ -11,3 +11,8 @@ struct Section {
     let name: String
     let image: String?
 }
+
+struct Api<T:Codable>: Codable {
+    let info: InfoCharacters
+    let results: T?
+}

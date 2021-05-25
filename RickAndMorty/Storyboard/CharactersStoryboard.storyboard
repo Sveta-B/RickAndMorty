@@ -27,7 +27,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Characters" id="J7f-lu-7Zr">
-                        <barButtonItem key="leftBarButtonItem" image="lessthan" catalog="system" id="c1t-P1-dG3">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left" catalog="system" id="c1t-P1-dG3">
                             <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="tapedBackButton:" destination="L4Z-ab-yob" id="wl0-U2-iJ7"/>
@@ -71,7 +71,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="icons8-filter-50" width="25" height="25"/>
-        <image name="lessthan" catalog="system" width="128" height="111"/>
     </resources>
 </document>

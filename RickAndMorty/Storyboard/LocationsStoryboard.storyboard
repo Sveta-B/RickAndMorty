@@ -26,7 +26,17 @@
                             <outlet property="delegate" destination="xAo-nO-E2h" id="fvj-IG-UkX"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="hQu-xz-7h4"/>
+                    <navigationItem key="navigationItem" id="hQu-xz-7h4">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left" catalog="system" id="m9j-Ts-JkO">
+                            <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="backButton:" destination="xAo-nO-E2h" id="lN8-F9-wHU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icons8-filter-50" id="bZS-2v-HCa">
+                            <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEW-cY-8B2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,4 +64,8 @@
             <point key="canvasLocation" x="200.00000000000003" y="59.598214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
+        <image name="icons8-filter-50" width="25" height="25"/>
+    </resources>
 </document>

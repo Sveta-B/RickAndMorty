@@ -26,10 +26,10 @@ struct Character: Codable {
     let id: Int
     let name: String
     let status: Status
-    let species: String
-    let gender: Gender
-    let image: String
-    let url: String
+    let species: String?
+    let gender: Gender?
+    let image: String?
+    let url: String?
 }
 
 enum Gender: String, Codable {

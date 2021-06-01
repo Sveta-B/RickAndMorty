@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Section {
-    let name: String
-    let image: String?
+enum Sections: String {
+    case character = "Characters"
+    case location = "Locations"
+    case episode =  "Episodes"
 }
-
-struct Api<T:Codable>: Codable {
-    let info: InfoCharacters
-    let results: T?
+struct Section {
+    let name: Sections
+    let image: Sections
 }

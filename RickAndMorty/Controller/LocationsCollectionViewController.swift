@@ -8,10 +8,24 @@
 import UIKit
 
 class LocationsCollectionViewController: ParentCollectionViewController {
-    var locations = ["", "", ""]
+    private var countRows: Int?
+    var locations: [Location]?
+    var locationData: LocationData?
+    private let networkManager = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
+        title = "Locations"
+        networkManager.getData(nameSection: .location, typeResult: locationData, pageNumber: 1) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.locations = data?.results
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        collectionView.register(UINib(nibName: Constants.NibName.CharacterCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
 
     }
 
@@ -24,13 +38,20 @@ class LocationsCollectionViewController: ParentCollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        guard let count = countRows else { return 20 }
+      return count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
-        cell.nameLabel.text = locations[indexPath.item]
-        cell.imageView.image = #imageLiteral(resourceName: "characters")
+        
+        DispatchQueue.main.async {
+            guard let location = self.locations?[indexPath.item] else { return}
+            print(location)
+                cell.nameLabel.text = location.name
+            
+            cell.imageView.image = UIImage(named: "rick_morty_PNG19")
+        }
         return cell
     }
 

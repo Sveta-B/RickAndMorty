@@ -9,7 +9,7 @@
         <!--Locations Collection View Controller-->
         <scene sceneID="pUq-ym-z0D">
             <objects>
-                <collectionViewController id="xAo-nO-E2h" customClass="LocationsCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="LocationsCollectionViewController" id="xAo-nO-E2h" customClass="LocationsCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="enV-Um-lcF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,6 +45,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="2cF-v2-lJE">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1w-t1-ZyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="LocationsNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Pbd-UA-Daz" customClass="NavigationViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="aU4-ak-5OX">
@@ -59,7 +60,6 @@
                         <segue destination="xAo-nO-E2h" kind="relationship" relationship="rootViewController" id="XZq-Xr-ikW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v1w-t1-ZyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="200.00000000000003" y="59.598214285714285"/>
         </scene>

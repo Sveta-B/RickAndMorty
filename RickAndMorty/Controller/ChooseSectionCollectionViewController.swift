@@ -8,7 +8,8 @@
 import UIKit
 
 class ChooseSectionCollectionViewController: ParentCollectionViewController {
-    let sections = [Section(name: "Characters", image: "characters"), Section(name: "Locations", image: "locations"), Section(name: "Episodes", image: "episodes")]
+   
+    let sections = [Section(name: .character, image: .character), Section(name: .location, image: .location), Section(name: .episode, image: .episode)]
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:Constants.ReuseIdentifier.SectionCollectionViewCell.rawValue, for: indexPath) as! SectionCollectionViewCell 
         let  section = sections[indexPath.item]
-        cell.nameSectionLabel.text = section.name
-        cell.imageForSection.image = UIImage(named: section.image!)
+        cell.nameSectionLabel.text = section.name.rawValue
+        cell.imageForSection.image = UIImage(named: section.image.rawValue)
         return cell
         
     }
@@ -41,15 +42,19 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
             changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersNavigationViewController.rawValue)
         case [0, 1]:
             changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsNavigationViewController.rawValue)
+        case [0, 2]:
+            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesNavigationViewController.rawValue)
+            
         default:
-            print("no sb")
+            return
         }
+        
+        
     }
     
     func changeSection(nameStoryboard: String,  idVC: String) {
     let storyboard = UIStoryboard(name: nameStoryboard, bundle: nil)
         guard let secondViewController = storyboard.instantiateViewController(identifier: idVC)  as? NavigationViewController else { return }
-       // navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.modalPresentationStyle = .fullScreen
         show(secondViewController, sender: nil)
     }

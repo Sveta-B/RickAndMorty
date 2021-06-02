@@ -25,11 +25,13 @@ struct Constants {
     }
     enum NibName: String {
     case CharacterCollectionViewCell
+    case CustomTableViewCell
     }
     
     enum ReuseIdentifier: String {
         
         case SectionCollectionViewCell
         case CharactersCell
+        case EpisodeTableViewCell
     }
 }

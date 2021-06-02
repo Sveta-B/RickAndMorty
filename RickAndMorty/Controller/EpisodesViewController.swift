@@ -7,20 +7,26 @@
 
 import UIKit
 
-class EpisodesViewController: UIViewController {
-    var episodes: [Episode]? {
+class EpisodesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
+    private var episodes: [Episode]? {
         didSet {
             print(episodes)
         }
     }
-    var episodeData: EpisodeData?
+    private var episodeData: EpisodeData?
     private let networkManager = NetworkManager()
     
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var name: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Episodes"
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: Constants.NibName.CustomTableViewCell.rawValue, bundle: nil), forCellReuseIdentifier: Constants.ReuseIdentifier.EpisodeTableViewCell.rawValue)
         networkManager.getData(nameSection: .episode, typeResult: episodeData, pageNumber: 1) { [weak self](result) in
          
             switch result {
@@ -33,13 +39,31 @@ class EpisodesViewController: UIViewController {
             
         }
         
-        
-        
     }
     
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return episodes?.count ?? 1
+    }
+
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 20
+    }
+
     
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifier.EpisodeTableViewCell.rawValue, for: indexPath) as! CustomTableViewCell
+        cell.dateLabel.text = self.episodes?[indexPath.row].name
+        
+
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 200 //or whatever you need
+    }
     /*
     // MARK: - Navigation
 

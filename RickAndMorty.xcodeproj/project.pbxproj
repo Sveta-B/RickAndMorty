@@ -10,6 +10,8 @@
 		3F2576312660E8F20093BFDB /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576302660E8F20093BFDB /* EpisodesViewController.swift */; };
 		3F2576342660E9140093BFDB /* EpisodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576332660E9140093BFDB /* EpisodeData.swift */; };
 		3F2576372660EAA20093BFDB /* EpisodesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2576362660EAA20093BFDB /* EpisodesStoryboard.storyboard */; };
+		3F460C2A26676FF000F388F3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F460C2826676FF000F388F3 /* CustomTableViewCell.swift */; };
+		3F460C2B26676FF000F388F3 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F460C2926676FF000F388F3 /* CustomTableViewCell.xib */; };
 		3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */; };
 		3F6A8D2426566CF800457894 /* CharactersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */; };
 		3F6A8D27265670AF00457894 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A8D26265670AF00457894 /* Constants.swift */; };
@@ -38,6 +40,8 @@
 		3F2576302660E8F20093BFDB /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3F2576332660E9140093BFDB /* EpisodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeData.swift; sourceTree = "<group>"; };
 		3F2576362660EAA20093BFDB /* EpisodesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodesStoryboard.storyboard; sourceTree = "<group>"; };
+		3F460C2826676FF000F388F3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		3F460C2926676FF000F388F3 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersStoryboard.storyboard; sourceTree = "<group>"; };
 		3F6A8D26265670AF00457894 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				3FD644442656D21500B0B5C1 /* ParentCollectionViewController.swift */,
 				3FC6974426544BD4000881F2 /* CharacterCollectionViewCell.swift */,
 				3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */,
+				3F460C2826676FF000F388F3 /* CustomTableViewCell.swift */,
+				3F460C2926676FF000F388F3 /* CustomTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 				3FD7870A265D04C100520A05 /* DetailsStoryboard.storyboard in Resources */,
 				3FE9CB5F265274F800401829 /* LaunchScreen.storyboard in Resources */,
 				3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */,
+				3F460C2B26676FF000F388F3 /* CustomTableViewCell.xib in Resources */,
 				3FE9CB5C265274F800401829 /* Assets.xcassets in Resources */,
 				3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */,
 				3FE9CB5A265274F700401829 /* Main.storyboard in Resources */,
@@ -252,6 +259,7 @@
 				3FC6974226544A9C000881F2 /* CharactersCollectionViewController.swift in Sources */,
 				3F2576312660E8F20093BFDB /* EpisodesViewController.swift in Sources */,
 				3FCFB76326528C9C006F473A /* NavigationViewController.swift in Sources */,
+				3F460C2A26676FF000F388F3 /* CustomTableViewCell.swift in Sources */,
 				3FC696B82652E3B0000881F2 /* SectionCollectionViewCell.swift in Sources */,
 				3FE9CB6A26527D2400401829 /* CharacterData.swift in Sources */,
 				3FCFB76026527FB8006F473A /* ChooseSectionCollectionViewController.swift in Sources */,

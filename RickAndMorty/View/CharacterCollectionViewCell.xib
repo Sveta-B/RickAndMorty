@@ -27,7 +27,7 @@
                         <rect key="frame" x="0.0" y="287" width="395" height="152"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqc-hb-dW4">
-                                <rect key="frame" x="182" y="69" width="31" height="14.5"/>
+                                <rect key="frame" x="16" y="69" width="363" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,6 +36,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Lqc-hb-dW4" firstAttribute="centerX" secondItem="CB6-Nh-prx" secondAttribute="centerX" id="67n-ng-Bfk"/>
+                            <constraint firstAttribute="trailing" secondItem="Lqc-hb-dW4" secondAttribute="trailing" constant="16" id="DYP-EY-4zI"/>
+                            <constraint firstItem="Lqc-hb-dW4" firstAttribute="leading" secondItem="CB6-Nh-prx" secondAttribute="leading" constant="16" id="S4X-aC-zbK"/>
                             <constraint firstItem="Lqc-hb-dW4" firstAttribute="centerY" secondItem="CB6-Nh-prx" secondAttribute="centerY" id="fMD-EA-HFc"/>
                         </constraints>
                     </view>

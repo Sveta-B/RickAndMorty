@@ -17,6 +17,7 @@ class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate 
         indicator.startAnimating()
         imageView.contentMode = .scaleToFill
         contentView.layer.cornerRadius = 10
+        nameLabel.numberOfLines = 0
        
     }
 }

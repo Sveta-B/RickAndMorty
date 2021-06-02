@@ -13,7 +13,8 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     
     private var countItem = 0
     private var countRows = 0
-    private var pagesCount = 1
+    private var pagesCount = 0
+    private var numberOfPage = 1
     private var characters: [Character]? {
         didSet {
             countItem = characters?.count ?? 0
@@ -36,15 +37,15 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
-        
-        collectionView.register(UINib(nibName: Constants.NibName.CharacterCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
+        collectionView.register(UINib(nibName: Constants.NibName.CharacterCollectionViewCell.rawValue,                           bundle: nil),
+                                forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
         createSearchController()
-        networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: pagesCount) { [weak self] (result) in
+        networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: numberOfPage) { [weak self] (result) in
             switch result {
             case .success(let characterData) :
                 self?.charactersData = characterData
                 self?.characters = characterData?.results
+                self?.numberOfPage += 1
             case .failure(let error):
                 print(error)
 
@@ -98,11 +99,10 @@ class CharactersCollectionViewController: ParentCollectionViewController {
 
     //MARK: - WillDisplay cell
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        var i = 2
         if indexPath.row == countItem - 8 {
-            while i < pagesCount + 1 {
-                fetchMoreData(pageNumber: i)
-                i += 1
+            while numberOfPage < pagesCount + 1 {
+                fetchMoreData(pageNumber: numberOfPage)
+                numberOfPage += 1
             }
        }
         self.countItem = (self.characters?.count)!
@@ -114,7 +114,6 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: pageNumber) { [weak self] (result) in
             switch result {
             case .success(let characterData) :
-              //  self?.charactersData = characterData
                 self?.characters? += characterData?.results ?? []
             case .failure(let error):
                 print(error)

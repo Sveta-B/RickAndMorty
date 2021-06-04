@@ -16,6 +16,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var typeSecondLabel: UILabel!
     @IBOutlet weak var typeThirdLabel: UILabel!
+    @IBOutlet weak var typeFourthLabel: UILabel!
    
     
     override func awakeFromNib() {

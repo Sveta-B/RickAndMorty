@@ -101,6 +101,7 @@
                 <outlet property="nameLabel" destination="BDT-pQ-oJ9" id="7SO-St-SdI"/>
                 <outlet property="secondLabel" destination="u1O-Kt-7aY" id="JhV-4Z-r4F"/>
                 <outlet property="thirdLabel" destination="6XW-nd-dAD" id="Zgw-B6-6SU"/>
+                <outlet property="typeFourthLabel" destination="R5I-Iu-fwV" id="yrl-oD-i09"/>
                 <outlet property="typeSecondLabel" destination="N08-Ij-NdC" id="ZIf-5y-5f0"/>
                 <outlet property="typeThirdLabel" destination="QDP-G1-0Hh" id="lzs-LU-UIe"/>
                 <outlet property="view" destination="wks-hh-Rab" id="3zx-Aa-f1A"/>

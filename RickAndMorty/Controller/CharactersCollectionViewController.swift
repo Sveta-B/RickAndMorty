@@ -24,7 +24,6 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         didSet {
            countRows =  charactersData?.info.count ?? 20
            pagesCount = charactersData?.info.pages ?? 20
-            
         }
     }
     private let networkManager = NetworkManager()

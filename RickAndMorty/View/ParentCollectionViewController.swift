@@ -7,21 +7,32 @@
 
 import UIKit
 
-class ParentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ParentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+    private let searchController = UISearchController(searchResultsController: nil)
     var wightScreen = CGFloat()
     var hightScreen = CGFloat()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         collectionView.backgroundColor = #colorLiteral(red: 0.144208163, green: 0.1694156826, blue: 0.2115245759, alpha: 1) 
         wightScreen = view.bounds.size.width
         hightScreen = view.bounds.size.height
       let layout = UICollectionViewFlowLayout()
        collectionView.collectionViewLayout = layout
+       // createSearchController()
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+  
 
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
         var countItemInRow: Int
-        print(wightScreen)
         switch wightScreen {
         case 0...399:
             countItemInRow = 2
@@ -52,4 +63,12 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         return insets
     }
 
+    // MARK: - SearchController
+    func  createSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Введите имя"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+            }
 }

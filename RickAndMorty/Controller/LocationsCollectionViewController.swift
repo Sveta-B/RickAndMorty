@@ -46,7 +46,6 @@ class LocationsCollectionViewController: ParentCollectionViewController {
         
        
         if let location = self.locations?[indexPath.item] {
-            print(location)
                 cell.nameLabel.text = location.name
             cell.secondLabel.text = location.dimension
             cell.thirdLabel.text = location.type

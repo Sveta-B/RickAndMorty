@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1AE573266A2D800084BDF9 /* ContainerForData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AE572266A2D800084BDF9 /* ContainerForData.swift */; };
 		3F2576342660E9140093BFDB /* EpisodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576332660E9140093BFDB /* EpisodeData.swift */; };
 		3F2576372660EAA20093BFDB /* EpisodesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2576362660EAA20093BFDB /* EpisodesStoryboard.storyboard */; };
 		3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F1AE572266A2D800084BDF9 /* ContainerForData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerForData.swift; sourceTree = "<group>"; };
 		3F2576332660E9140093BFDB /* EpisodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeData.swift; sourceTree = "<group>"; };
 		3F2576362660EAA20093BFDB /* EpisodesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodesStoryboard.storyboard; sourceTree = "<group>"; };
 		3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				3FC697382653E73B000881F2 /* NetworkManager.swift */,
+				3F1AE572266A2D800084BDF9 /* ContainerForData.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				3FC697392653E73B000881F2 /* NetworkManager.swift in Sources */,
 				3FDEE737265ACE8000B6372F /* DetailsViewController.swift in Sources */,
 				3FD6444E2656DF8B00B0B5C1 /* LocationData.swift in Sources */,
+				3F1AE573266A2D800084BDF9 /* ContainerForData.swift in Sources */,
 				3FCFB76C265290DB006F473A /* Section.swift in Sources */,
 				3FE9CB53265274F700401829 /* AppDelegate.swift in Sources */,
 				3FDE8DB0266A0E13001D1BFA /* EpisodesCollectionViewController.swift in Sources */,

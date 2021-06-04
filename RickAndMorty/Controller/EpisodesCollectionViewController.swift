@@ -20,8 +20,6 @@ class EpisodesCollectionViewController: ParentCollectionViewController {
         title = "Episodes"
         collectionView.register(UINib(nibName: Constants.NibName.CustomCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
         networkManager.getData(nameSection: .episode, typeResult: episodeData, pageNumber: 1) { [weak self](result) in
-           
-             
             switch result {
             case .success(let data):
                 self?.episodes = data?.results
@@ -42,8 +40,9 @@ class EpisodesCollectionViewController: ParentCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue, for: indexPath) as! CustomCollectionViewCell
         
-        cell.typeSecondLabel.text = "Date"
-        cell.typeThirdLabel.text = "Episode number"
+        cell.typeSecondLabel.text = "Episode number"
+        cell.typeThirdLabel.text = "Date"
+        cell.typeFourthLabel.text = "Characters"
         if let episode = self.episodes?[indexPath.item] {
             cell.nameLabel.text = episode.name
             cell.secondLabel.text = episode.airDate

@@ -25,15 +25,14 @@ class LocationsCollectionViewController: ParentCollectionViewController {
             
         }
         
-        collectionView.register(UINib(nibName: Constants.NibName.CharacterCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
+        collectionView.register(UINib(nibName:
+                                      Constants.NibName.CustomCollectionViewCell.rawValue,
+                                      bundle: nil),
+                                      forCellWithReuseIdentifier:
+                                      Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
 
     }
 
-   
-    
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // MARK: UICollectionViewDataSource
 
@@ -43,16 +42,16 @@ class LocationsCollectionViewController: ParentCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue, for: indexPath) as! CustomCollectionViewCell
         
-        DispatchQueue.main.async {
-            guard let location = self.locations?[indexPath.item] else { return}
+       
+        if let location = self.locations?[indexPath.item] {
             print(location)
                 cell.nameLabel.text = location.name
-            
-            cell.imageView.image = UIImage(named: "rick_morty_PNG19")
+            cell.secondLabel.text = location.dimension
+            cell.thirdLabel.text = location.type
+               
         }
         return cell
     }
-
 }

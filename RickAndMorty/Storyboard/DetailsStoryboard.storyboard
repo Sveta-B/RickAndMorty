@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Name-->
+        <!--Details View Controller-->
         <scene sceneID="CYm-I7-Mah">
             <objects>
                 <viewController storyboardIdentifier="DetailsViewController" id="8TT-SC-QRI" customClass="DetailsViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,11 +104,6 @@
                             <constraint firstItem="q0Z-IT-VzF" firstAttribute="trailing" secondItem="6yL-5c-VJE" secondAttribute="trailing" constant="32" id="mx7-bJ-T4M"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Name" id="L7A-qN-zNx">
-                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left" catalog="system" id="qkx-Pi-jy2">
-                            <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="characterImage" destination="6yL-5c-VJE" id="d4d-dB-dK7"/>
                         <outlet property="genderLabel" destination="Lk0-pp-Aw3" id="CxY-wC-J0a"/>
@@ -122,7 +117,4 @@
             <point key="canvasLocation" x="936.23188405797111" y="80.357142857142847"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
-    </resources>
 </document>

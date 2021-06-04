@@ -17,9 +17,6 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
 
     // MARK: - UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sections.count
     }
@@ -39,22 +36,21 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
         print("You taped on \(indexPath)")
         switch indexPath {
         case [0, 0]:
-            changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersNavigationViewController.rawValue)
+            changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)
         case [0, 1]:
-            changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsNavigationViewController.rawValue)
+            changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsCollectionViewController.rawValue)
         case [0, 2]:
-            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesNavigationViewController.rawValue)
+            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesCollectionViewController.rawValue)
             
         default:
             return
-        }
-        
+        }  
         
     }
     
     func changeSection(nameStoryboard: String,  idVC: String) {
     let storyboard = UIStoryboard(name: nameStoryboard, bundle: nil)
-        guard let secondViewController = storyboard.instantiateViewController(identifier: idVC)  as? NavigationViewController else { return }
+        guard let secondViewController = storyboard.instantiateViewController(identifier: idVC)  as? UICollectionViewController else { return }
         secondViewController.modalPresentationStyle = .fullScreen
         show(secondViewController, sender: nil)
     }

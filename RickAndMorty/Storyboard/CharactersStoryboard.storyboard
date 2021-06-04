@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BQl-HH-Gd3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L4Z-ab-yob">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Characters-->
+        <!--Characters Collection View Controller-->
         <scene sceneID="GaA-9f-1lw">
             <objects>
                 <collectionViewController storyboardIdentifier="CharactersCollectionViewController" id="L4Z-ab-yob" customClass="CharactersCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ORC-Xa-qcV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K44-fW-ib2">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -26,52 +25,10 @@
                             <outlet property="delegate" destination="L4Z-ab-yob" id="yaE-hX-wpU"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Characters" id="J7f-lu-7Zr">
-                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left" catalog="system" id="c1t-P1-dG3">
-                            <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="tapedBackButton:" destination="L4Z-ab-yob" id="wl0-U2-iJ7"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icons8-filter-50" id="i1O-yc-n2Q">
-                            <color key="tintColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="filter:" destination="L4Z-ab-yob" id="sDO-gs-dKb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBV-IJ-bBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="80"/>
         </scene>
-        <!--Navigation View Controller-->
-        <scene sceneID="qWL-H3-kCJ">
-            <objects>
-                <navigationController storyboardIdentifier="CharactersNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQl-HH-Gd3" customClass="NavigationViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0Sw-rA-Mzm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="tintColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.55294117649999996" green="0.57254901960000004" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="L4Z-ab-yob" kind="relationship" relationship="rootViewController" id="Akf-Ik-wDu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ar-DV-9ou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="88"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
-        <image name="icons8-filter-50" width="25" height="25"/>
-    </resources>
 </document>

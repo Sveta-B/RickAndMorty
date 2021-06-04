@@ -33,5 +33,25 @@ struct NetworkManager {
         
     }
 
+    
+    func getCharacterData(stringURL: String, completionHandler: @escaping (Result<Character?, Error>) -> Void)  {
+   
+    guard  let url = URL(string: stringURL) else { return }
+       
+    let session = URLSession(configuration: .default)
+    let dataTask = session.dataTask(with: url) {(data, response, error) in
+        guard let data = data  else {return}
+        
+        do {  let json = try? JSONDecoder().decode(Character.self, from: data)
+            completionHandler(.success(json))
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    dataTask.resume()
+        
+    }
+
 }
 

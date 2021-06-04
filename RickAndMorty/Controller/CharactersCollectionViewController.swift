@@ -12,34 +12,30 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     //MARK: - Properties
     
     private var countItem = 0
-    private var countRows = 0
+    private var countRows = 20
     private var pagesCount = 0
     private var numberOfPage = 1
     private var characters: [Character]? {
         didSet {
             countItem = characters?.count ?? 0
-            
         }
     }
     private var charactersData: CharacterData? {
         didSet {
-           countRows =  charactersData?.info.count ?? 0
-           pagesCount = charactersData?.info.pages ?? 0
+           countRows =  charactersData?.info.count ?? 20
+           pagesCount = charactersData?.info.pages ?? 20
             
         }
     }
     private let networkManager = NetworkManager()
     
-    private var searchCharacters: [Character]?
-    private let searchController = UISearchController(searchResultsController: nil)
+    
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Characters"
         
-        collectionView.register(UINib(nibName: Constants.NibName.CharacterCollectionViewCell.rawValue,                           bundle: nil),
-                                forCellWithReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue)
-        createSearchController()
         networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: numberOfPage) { [weak self] (result) in
             switch result {
             case .success(let characterData) :
@@ -48,31 +44,18 @@ class CharactersCollectionViewController: ParentCollectionViewController {
                 self?.numberOfPage += 1
             case .failure(let error):
                 print(error)
-
             }
         }
+        collectionView.register(UINib(nibName:
+                                      Constants.NibName.CharacterCollectionViewCell.rawValue,
+                                      bundle: nil),
+                                      forCellWithReuseIdentifier:
+                                      Constants.ReuseIdentifier.CharactersCell.rawValue)
         
-        searchCharacters = characters
-    }
-    
-    // MARK: - IBActions
-    @IBAction func filter(_ sender: Any) {
-       
-    }
-    
-    @IBAction func tapedBackButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
     }
 
-    // MARK: - SearchController
-    func  createSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Введите имя"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-            }
-    
+   
+
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -97,7 +80,7 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         return cell
     }
 
-    //MARK: - WillDisplay cell
+    //MARK: - Fetch more data
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == countItem - 8 {
             while numberOfPage < pagesCount + 1 {
@@ -122,7 +105,7 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         }
     }
     
-    //MARK: - DidSelectItemAt
+    //MARK: - Navigation
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let  character  = self.characters?[indexPath.item] {
            
@@ -134,16 +117,4 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     }
 }
 
-// MARK: - SearchResultsUpdating
-extension CharactersCollectionViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
-    private func filterContentForSearchText(_ searchText: String) {
-        searchCharacters = characters?.filter({ (characters: Character) -> Bool in
-            return characters.name.lowercased().contains(searchText.lowercased())
-        })
-        collectionView.reloadData()
-    }
-}
 

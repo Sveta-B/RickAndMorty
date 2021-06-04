@@ -12,6 +12,7 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
     var hightScreen = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = #colorLiteral(red: 0.144208163, green: 0.1694156826, blue: 0.2115245759, alpha: 1) 
         wightScreen = view.bounds.size.width
         hightScreen = view.bounds.size.height
       let layout = UICollectionViewFlowLayout()
@@ -19,9 +20,23 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
-        let hight = (Int(hightScreen) - Int(Constants.minimumSpacing) * 5 - (Constants.hightTabBar * 2)) / 3
-        let wight = (Int(wightScreen) - Int(Constants.minimumSpacing) * 3) / 2
-       return CGSize(width: wight, height: hight)
+        var countItemInRow: Int
+        print(wightScreen)
+        switch wightScreen {
+        case 0...399:
+            countItemInRow = 2
+        case 400...799:
+            countItemInRow = 3
+        case 800...999:
+            countItemInRow = 4
+        case 1000...:
+            countItemInRow = 5
+        default:
+            countItemInRow = 0
+        }
+        let wight = (Int(wightScreen) - Int(Constants.minimumSpacing) * (countItemInRow + 1)) / countItemInRow
+        let hight = Double(wight) * 1.4
+       return CGSize(width: wight, height: Int(hight))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -33,6 +48,7 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         insets.top = Constants.minimumSpacing
         insets.left = Constants.minimumSpacing
         insets.right = Constants.minimumSpacing
+        insets.bottom = Constants.minimumSpacing
         return insets
     }
 

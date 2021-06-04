@@ -15,7 +15,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="ew0-5J-LjN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z6l-ZT-Mls">
                             <size key="itemSize" width="123" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -75,7 +74,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="343" height="128"/>
                                 <connections>
-                                    <outlet property="imageForSection" destination="TAW-tH-fZR" id="Nrt-GI-eCO"/>
+                                    <outlet property="imageForSection" destination="TAW-tH-fZR" id="Qyr-Vd-DAC"/>
                                     <outlet property="nameSectionLabel" destination="Ofg-MO-M6Q" id="ZDc-US-fOs"/>
                                     <outlet property="viewForImage" destination="po7-B2-Nzm" id="HIU-Ro-ycu"/>
                                 </connections>
@@ -100,7 +99,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="46A-3P-40n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.15294116739999999" green="0.1686274707" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.55294117647058827" green="0.5725490196078431" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>

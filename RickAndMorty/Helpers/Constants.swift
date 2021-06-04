@@ -8,7 +8,7 @@
 import UIKit
 
 struct Constants {
-   static let  minimumSpacing:CGFloat = 32
+   static let  minimumSpacing:CGFloat = 16
     static let hightTabBar = 44
     
     enum Storyboards: String{
@@ -18,20 +18,20 @@ struct Constants {
         case EpisodesStoryboard
     }
     enum IdRootViewControllers: String {
-        case LocationsNavigationViewController
-        case CharactersNavigationViewController
+        case LocationsCollectionViewController
+        case CharactersCollectionViewController
+        case EpisodesCollectionViewController
         case DetailsViewController
-        case EpisodesNavigationViewController
     }
     enum NibName: String {
     case CharacterCollectionViewCell
-    case CustomTableViewCell
+    case CustomCollectionViewCell
     }
     
     enum ReuseIdentifier: String {
         
         case SectionCollectionViewCell
         case CharactersCell
-        case EpisodeTableViewCell
+        case CustomCollectionViewCell
     }
 }

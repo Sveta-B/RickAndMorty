@@ -8,8 +8,10 @@
 import UIKit
 
 class SectionCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var nameSectionLabel: UILabel!
+
     @IBOutlet weak var imageForSection: UIImageView!
+    @IBOutlet weak var nameSectionLabel: UILabel!
+   
     @IBOutlet weak var viewForImage: UIView!
     
     override func awakeFromNib() {

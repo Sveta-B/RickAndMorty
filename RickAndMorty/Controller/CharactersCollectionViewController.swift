@@ -12,19 +12,26 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     //MARK: - Properties
     
     private var countItem = 0
-    private var countRows = 20
+    private var countRows = 0
     private var pagesCount = 0
     private var numberOfPage = 1
     private var characters: [Character]? {
-        didSet {
-            countItem = characters?.count ?? 0
+        willSet{
+            if (newValue != nil) {
+                             countItem = newValue!.count
+                         }
         }
     }
     private var charactersData: CharacterData? {
-        didSet {
-           countRows =  charactersData?.info.count ?? 20
-           pagesCount = charactersData?.info.pages ?? 20
+        willSet{
+            if (newValue != nil) {
+                countRows =  newValue!.info.count
+                pagesCount = newValue!.info.pages
+                print(pagesCount)
+                print(countRows)
+                         }
         }
+
     }
     private let networkManager = NetworkManager()
     
@@ -58,7 +65,9 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return countRows
+       
+      return 671
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,13 +90,18 @@ class CharactersCollectionViewController: ParentCollectionViewController {
 
     //MARK: - Fetch more data
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if numberOfPage == pagesCount  {
+            return
+        } else {
         if indexPath.row == countItem - 8 {
-            while numberOfPage < pagesCount + 1 {
+                print(indexPath.item)
+                print(numberOfPage)
                 fetchMoreData(pageNumber: numberOfPage)
                 numberOfPage += 1
             }
        }
-        self.countItem = (self.characters?.count)!
+        self.countItem = self.characters?.count ?? 20
    }
 
 

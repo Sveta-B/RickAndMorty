@@ -32,8 +32,7 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
     // MARK: - UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
-        print("You taped on \(indexPath)")
+    
         switch indexPath {
         case [0, 0]:
             changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)

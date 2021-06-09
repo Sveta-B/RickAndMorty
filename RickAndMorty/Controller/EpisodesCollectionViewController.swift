@@ -49,8 +49,20 @@ class EpisodesCollectionViewController: ParentCollectionViewController {
             cell.thirdLabel.text = episode.episode
             
         }
+        
         return cell
     }
 
 
+    
+    //MARK: - Navigation
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let  episode  = self.episodes?[indexPath.item] {
+           
+            let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
+            guard let characterViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)  as? CharactersCollectionViewController else { return }
+           
+            navigationController?.pushViewController(characterViewController, animated: true)
+        }
+    }
 }

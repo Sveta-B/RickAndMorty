@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CharactersCollectionViewController: ParentCollectionViewController {
-    
+class CharactersCollectionViewController: ParentCollectionViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    private let searchController = UISearchController(searchResultsController: nil)
     //MARK: - Properties
     
     private var countItem = 0
@@ -34,14 +34,14 @@ class CharactersCollectionViewController: ParentCollectionViewController {
 
     }
     private let networkManager = NetworkManager()
-    
+    var filterCharacters: [Character]?
     
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Characters"
-        
+        searchController.searchBar.delegate = self
         networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: numberOfPage) { [weak self] (result) in
             switch result {
             case .success(let characterData) :
@@ -52,21 +52,56 @@ class CharactersCollectionViewController: ParentCollectionViewController {
                 print(error)
             }
         }
+       
         collectionView.register(UINib(nibName:
                                       Constants.NibName.CharacterCollectionViewCell.rawValue,
                                       bundle: nil),
                                       forCellWithReuseIdentifier:
                                       Constants.ReuseIdentifier.CharactersCell.rawValue)
-        
+        createSearchController()
     }
 
    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    
+        return CGSize(width: 343, height: 44)
+    }
+    // MARK: - SearchController
+    func  createSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Введите имя"
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+            }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
+            if searchText.isEmpty {
+                filterCharacters = characters
+                collectionView.reloadData()
+            } else {
+
+                func filterTableView(text:String) {
+                    let search = text.lowercased()
+                    filterCharacters = characters?.filter({ (mod) -> Bool in
+                        return (mod.name?.lowercased().contains(search))!
+                    })
+                    self.collectionView.reloadData()
+                }
+
+                filterTableView(text: searchText)
+            }
+        }
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-      return 671
+      return 371
         
     }
 
@@ -74,6 +109,7 @@ class CharactersCollectionViewController: ParentCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
         if let myCharacter = self.characters?[indexPath.item] {
             cell.nameLabel.text = myCharacter.name
+           
             cell.indicator.stopAnimating()
             if let stringForImage = myCharacter.image {
                 if let url = URL(string: stringForImage) {
@@ -92,16 +128,17 @@ class CharactersCollectionViewController: ParentCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if numberOfPage == pagesCount  {
+            print("range")
             return
         } else {
         if indexPath.row == countItem - 8 {
-                print(indexPath.item)
-                print(numberOfPage)
+                print(countItem)
                 fetchMoreData(pageNumber: numberOfPage)
                 numberOfPage += 1
+            self.countItem = self.characters?.count ?? 20
             }
        }
-        self.countItem = self.characters?.count ?? 20
+        //self.countItem = self.characters?.count ?? 20
    }
 
 

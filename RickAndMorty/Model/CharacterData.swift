@@ -23,9 +23,9 @@ struct InfoCharacters: Codable {
 
 // MARK: - Result
 struct Character: Codable {
-    let id: Int
-    let name: String
-    let status: Status
+    let id: Int?
+    let name: String?
+    let status: Status?
     let species: String?
     let gender: Gender?
     let image: String?

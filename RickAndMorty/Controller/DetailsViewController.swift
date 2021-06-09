@@ -29,7 +29,7 @@ class DetailsViewController: UIViewController {
         
         nameLabel.text = character?.name
         title = character?.name
-        statusLabel.text = character?.status.rawValue
+        statusLabel.text = character?.status?.rawValue
         genderLabel.text = character?.gender?.rawValue
         speciesLabel.text = character?.species
         

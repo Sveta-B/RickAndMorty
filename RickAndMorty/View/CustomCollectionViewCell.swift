@@ -23,9 +23,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         view.layer.cornerRadius = 10
         view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
     }
 
     @IBAction func showСharacters(_ sender: UIButton) {
+        
+        
     }
     
 }

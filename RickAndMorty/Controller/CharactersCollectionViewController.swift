@@ -29,6 +29,7 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
                 pagesCount = newValue!.info.pages
                 print(pagesCount)
                 print(countRows)
+                collectionView.reloadData()
                          }
         }
 
@@ -100,8 +101,10 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
-      return 371
+        if countRows == 0 {
+            return 20
+        }
+      return countRows
         
     }
 
@@ -114,9 +117,9 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
             if let stringForImage = myCharacter.image {
                 if let url = URL(string: stringForImage) {
                     if  let data = try? Data(contentsOf: url) {
-        DispatchQueue.main.async {
+        
             cell.imageView.image = UIImage(data: data)
-        }
+        
                     }
                 }
             }
@@ -138,7 +141,6 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
             self.countItem = self.characters?.count ?? 20
             }
        }
-        //self.countItem = self.characters?.count ?? 20
    }
 
 

@@ -23,7 +23,10 @@ struct NetworkManager {
     let dataTask = session.dataTask(with: url) {(data, response, error) in
         guard let data = data  else {return}
         do {  json = try? JSONDecoder().decode(T.self, from: data)
-            completionHandler(.success(json))
+            DispatchQueue.main.async {
+                completionHandler(.success(json))
+            }
+            
         } catch let error {
             print(error.localizedDescription)
         }

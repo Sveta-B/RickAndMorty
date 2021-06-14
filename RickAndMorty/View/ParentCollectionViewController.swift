@@ -12,6 +12,7 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
     var wightScreen = CGFloat()
     var hightScreen = CGFloat()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        

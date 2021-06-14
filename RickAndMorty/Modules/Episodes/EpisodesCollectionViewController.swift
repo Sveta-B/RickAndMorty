@@ -7,29 +7,52 @@
 
 import UIKit
 
-
-class EpisodesCollectionViewController: ParentCollectionViewController {
-
+protocol EpisodesCollectionViewProtocol: class {
+    func displayData(data: [Episode] )
     
-    private var episodes: [Episode]?
-    private var episodeData: EpisodeData?
-    private let networkManager = NetworkManager()
+}
+
+class EpisodesCollectionViewController: ParentCollectionViewController, EpisodesCollectionViewProtocol {
     
+    weak var interactor: EpisodesInteractorProtocol?
+    private var episodesToDisplay: [Episode]?
+    
+    
+    
+   override init(nibName: String?, bundle: Bundle?) {
+    super.init(nibName: nibName, bundle: bundle )
+
+    setUp()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        setUp()
+    }
+    
+     func setUp() {
+      let viewController = self
+      let  interactor = EpisodesInteractor()
+      let presenter = EpisodesPresenter(viewController: viewController)
+      interactor.presenter = presenter
+      viewController.interactor = interactor
+      interactor.fetchEpisodes()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         title = "Episodes"
         collectionView.register(UINib(nibName: Constants.NibName.CustomCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
-        networkManager.getData(nameSection: .episode, typeResult: episodeData, pageNumber: 1) { [weak self](result) in
-            switch result {
-            case .success(let data):
-                self?.episodes = data?.results
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
         
+    }
+    
+    
+    
+    func displayData(data: [Episode]) {
+        
+    }
    
     // MARK: UICollectionViewDataSource
 
@@ -43,7 +66,8 @@ class EpisodesCollectionViewController: ParentCollectionViewController {
         cell.typeSecondLabel.text = "Episode number"
         cell.typeThirdLabel.text = "Date"
         cell.typeFourthLabel.text = "Characters"
-        if let episode = self.episodes?[indexPath.item] {
+       
+        if let episode = self.episodesToDisplay?[indexPath.item] {
             cell.nameLabel.text = episode.name
             cell.secondLabel.text = episode.airDate
             cell.thirdLabel.text = episode.episode
@@ -52,17 +76,5 @@ class EpisodesCollectionViewController: ParentCollectionViewController {
         
         return cell
     }
-
-
-    
-    //MARK: - Navigation
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let  episode  = self.episodes?[indexPath.item] {
-           
-            let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
-            guard let characterViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)  as? CharactersCollectionViewController else { return }
-           
-            navigationController?.pushViewController(characterViewController, animated: true)
-        }
-    }
+  
 }

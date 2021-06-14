@@ -7,15 +7,15 @@
 
 import UIKit
 
-class CharactersCollectionViewController: ParentCollectionViewController, UISearchResultsUpdating, UISearchBarDelegate {
-    private let searchController = UISearchController(searchResultsController: nil)
+class CharactersCollectionViewController: ParentCollectionViewController, UISearchBarDelegate {
+    let searchController = UISearchController()
     //MARK: - Properties
     
     private var countItem = 0
     private var countRows = 0
     private var pagesCount = 0
     private var numberOfPage = 1
-    private var characters: [Character]? {
+    var characters: [Character]? {
         willSet{
             if (newValue != nil) {
                              countItem = newValue!.count
@@ -35,13 +35,14 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
 
     }
     private let networkManager = NetworkManager()
-    var filterCharacters: [Character]?
+    var searchCharacters: [Character]?
     
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Characters"
+      searchCharacters = characters
         searchController.searchBar.delegate = self
         networkManager.getData(nameSection: .character, typeResult: charactersData, pageNumber: numberOfPage) { [weak self] (result) in
             switch result {
@@ -63,44 +64,14 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
     }
 
    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-    
-        return CGSize(width: 343, height: 44)
-    }
-    // MARK: - SearchController
-    func  createSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Введите имя"
-        
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-            }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-            if searchText.isEmpty {
-                filterCharacters = characters
-                collectionView.reloadData()
-            } else {
-
-                func filterTableView(text:String) {
-                    let search = text.lowercased()
-                    filterCharacters = characters?.filter({ (mod) -> Bool in
-                        return (mod.name?.lowercased().contains(search))!
-                    })
-                    self.collectionView.reloadData()
-                }
-
-                filterTableView(text: searchText)
-            }
-        }
+  
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return searchCharacters?.count ?? 0
+        }
+        
         if countRows == 0 {
             return 20
         }
@@ -110,11 +81,16 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
-        if let myCharacter = self.characters?[indexPath.item] {
-            cell.nameLabel.text = myCharacter.name
+        var myCharacter: Character?
+        if searchController.isActive {
+            myCharacter = self.searchCharacters?[indexPath.item]
+        } else {
+        myCharacter = self.characters?[indexPath.item]
+        }
+        cell.nameLabel.text = myCharacter?.name
            
             cell.indicator.stopAnimating()
-            if let stringForImage = myCharacter.image {
+        if let stringForImage = myCharacter?.image {
                 if let url = URL(string: stringForImage) {
                     if  let data = try? Data(contentsOf: url) {
         
@@ -123,7 +99,7 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
                     }
                 }
             }
-        }
+        
         return cell
     }
 
@@ -168,5 +144,4 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
         }
     }
 }
-
 

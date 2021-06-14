@@ -25,8 +25,8 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
     private var charactersData: CharacterData? {
         willSet{
             if (newValue != nil) {
-                countRows =  newValue!.info.count
-                pagesCount = newValue!.info.pages
+                countRows =  newValue?.info.count ?? 0
+                pagesCount = newValue?.info.pages ?? 0
                 print(pagesCount)
                 print(countRows)
                 collectionView.reloadData()

@@ -18,18 +18,18 @@ class EpisodesCollectionViewController: ParentCollectionViewController, Episodes
     private var episodesToDisplay: [Episode]?
     
     
-    
-   override init(nibName: String?, bundle: Bundle?) {
-    super.init(nibName: nibName, bundle: bundle )
-
-    setUp()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setUp()
-    }
+//    
+//   override init(nibName: String?, bundle: Bundle?) {
+//    super.init(nibName: nibName, bundle: bundle )
+//
+//    setUp()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        
+//        setUp()
+//    }
     
      func setUp() {
       let viewController = self
@@ -37,12 +37,13 @@ class EpisodesCollectionViewController: ParentCollectionViewController, Episodes
       let presenter = EpisodesPresenter(viewController: viewController)
       interactor.presenter = presenter
       viewController.interactor = interactor
-      interactor.fetchEpisodes()
+      
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        setUp()
+        interactor?.fetchEpisodes()
         title = "Episodes"
         collectionView.register(UINib(nibName: Constants.NibName.CustomCollectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
         

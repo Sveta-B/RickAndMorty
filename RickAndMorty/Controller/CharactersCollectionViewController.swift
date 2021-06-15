@@ -103,7 +103,15 @@ class CharactersCollectionViewController: ParentCollectionViewController, UISear
         return cell
     }
 
-    //MARK: - Fetch more data
+//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
+//            print(numberOfPage)
+//            fetchMoreData(pageNumber: numberOfPage)
+//            numberOfPage += 1
+//        self.countItem = self.characters?.count ?? 20
+//        }
+//    }
+//    MARK: - Fetch more data
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if numberOfPage == pagesCount  {

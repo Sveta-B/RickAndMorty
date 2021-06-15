@@ -6,10 +6,12 @@
 //
 
 import Foundation
+protocol NetworkManagerProtocol {
+    func getData<T: Codable>(nameSection: Sections, typeResult: T?, pageNumber: Int, completionHandler: @escaping (Result<T?, Error>) -> Void)
+}
 
 
-
-struct NetworkManager {
+struct NetworkManager: NetworkManagerProtocol {
  let baseURL = "https://rickandmortyapi.com/api/"
     
 

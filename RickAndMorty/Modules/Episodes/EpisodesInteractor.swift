@@ -25,6 +25,7 @@ class EpisodesInteractor: EpisodesInteractorProtocol {
             switch result {
             case .success(let data):
                 self?.presenter?.presentData(data: data!)
+                print(data)
             case .failure(let error):
                 print(error.localizedDescription)
             }

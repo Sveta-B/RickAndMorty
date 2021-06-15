@@ -37,14 +37,11 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
         case [0, 0]:
             changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)
         case [0, 1]:
-            changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsCollectionViewController.rawValue)
+            changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsViewController.rawValue)
             
         case [0, 2]:
-            let storyboard = UIStoryboard(name: Constants.Storyboards.EpisodesStoryboard.rawValue, bundle: nil)
-                guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EpisodesCollectionViewController.rawValue)  as? EpisodesCollectionViewController else { return }
-                secondViewController.modalPresentationStyle = .fullScreen
-                show(secondViewController, sender: nil)
-//            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesCollectionViewController.rawValue)
+           
+            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesCollectionViewController.rawValue)
             
         default:
             return

@@ -6,8 +6,16 @@
 //
 
 import UIKit
+protocol CustomCollectionViewCellProtocol {
+    var name: String { get }
+    var type: String? { get }
+    var  dimension: String? { get }
+    var residents: [String]? { get }
+}
 
 class CustomCollectionViewCell: UICollectionViewCell {
+    
+    
     @IBOutlet weak var view: UIView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,6 +37,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBAction func showСharacters(_ sender: UIButton) {
         
         
+    }
+    
+    func set(viewModel: CustomCollectionViewCellProtocol) {
+        nameLabel.text = viewModel.name
+        thirdLabel.text = viewModel.type
+        secondLabel.text = viewModel.dimension
+    
     }
     
 }

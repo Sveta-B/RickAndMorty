@@ -18,7 +18,7 @@ struct Constants {
         case EpisodesStoryboard
     }
     enum IdRootViewControllers: String {
-        case LocationsCollectionViewController
+        case LocationsViewController
         case CharactersCollectionViewController
         case EpisodesCollectionViewController
         case DetailsViewController

@@ -1,34 +1,32 @@
 //
-//  LocationsViewController.swift
+//  EpisodesViewController.swift
 //  RickAndMorty
 //
 //  Created by Света Брасс on 15.06.21.
+//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-protocol LocationsDisplayLogic: class {
-  func displayData(viewModel: Locations.Model.ViewModel.ViewModelData)
+protocol EpisodesDisplayLogic: class {
+  func displayData(viewModel: Episodes.Model.ViewModel.ViewModelData)
 }
 
-class LocationsViewController:ParentCollectionViewController , LocationsDisplayLogic, CellDelegate {
-    
-    
+class EpisodesViewController: ParentCollectionViewController, EpisodesDisplayLogic {
   
- private var interactor: LocationsBusinessLogic?
-  private var router: (NSObjectProtocol & LocationsRoutingLogic)?
+    private var interactor: EpisodesBusinessLogic?
+    private var router: (NSObjectProtocol & EpisodesRoutingLogic)?
+    var episodes = EpisodesModel.init(cells: [])
 
-    private var countRows: Int?
-    var locations =  LocationsModel.init(cells: [])
   
   
   // MARK: Setup
   
   private func setup() {
     let viewController        = self
-    let interactor            = LocationsInteractor()
-    let presenter             = LocationsPresenter()
-    let router                = LocationsRouter()
+    let interactor            = EpisodesInteractor()
+    let presenter             = EpisodesPresenter()
+    let router                = EpisodesRouter()
     viewController.interactor = interactor
     viewController.router     = router
     interactor.presenter      = presenter
@@ -37,20 +35,18 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
   }
   
   // MARK: Routing
-    func didShowCharacters(characters: [String]?) {
-        router?.navigateCharacters(characters: characters ?? [])
-        
-    }
+
 
   
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Locations"
+    title = "Episodes"
+    
     setup()
     
-    interactor?.makeRequest(request: .getLocations)
+    interactor?.makeRequest(request: .getEpisodes)
     collectionView.register(UINib(nibName:
                                   Constants.NibName.CustomCollectionViewCell.rawValue,
                                   bundle: nil),
@@ -58,43 +54,36 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
                                   Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
   }
 
-  func displayData(viewModel: Locations.Model.ViewModel.ViewModelData) {
+  func displayData(viewModel: Episodes.Model.ViewModel.ViewModelData) {
     switch viewModel {
-    
-    case .displayLocations(locationModel: let locationModel):
-  
-        locations = locationModel
+    case .displayEpisodes(episodeModel: let episodeModel):
+        episodes = episodeModel
         collectionView.reloadData()
+        
     }
   }
-    
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if locations.cells.count == 108 {
+        if episodes.cells.count == 108 {
             return
         } else
         if scrollView.contentOffset.y > scrollView.contentSize.height / 1.4 {
-        interactor?.makeRequest(request: .getMoreLocations)
+            interactor?.makeRequest(request: .getMoreEpisodes)
         
         }
     }
-    
-    
-    // MARK: UICollectionViewDataSource
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-        return locations.cells.count
+        return episodes.cells.count
     }
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue, for: indexPath) as! CustomCollectionViewCell
-        let location = locations.cells[indexPath.item]
-        
-        cell.set(viewModel: location)
-        cell.delegate = self
+        let episode = episodes.cells[indexPath.item]
+        cell.setEpisodes(viewModel: episode)
+        cell.typeSecondLabel.text = "Number"
+        cell.typeThirdLabel.text = "Date"
         return cell
     }
-    
-    
   
 }

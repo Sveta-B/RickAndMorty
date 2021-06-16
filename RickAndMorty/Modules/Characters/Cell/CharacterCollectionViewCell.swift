@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol CharactersCollectionViewCellProtocol {
+    var name: String { get }
+    var image: String? { get }
+    
+}
+
 class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,5 +25,18 @@ class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate 
         contentView.layer.cornerRadius = 10
         nameLabel.numberOfLines = 0
        
+    }
+    
+    
+    func set(viewModel: CharactersCollectionViewCellProtocol) {
+        nameLabel.text = viewModel.name
+        if let stringForImage = viewModel.image {
+                if let url = URL(string: stringForImage) {
+                    if  let data = try? Data(contentsOf: url) {
+        
+        imageView.image = UIImage(data: data)
+                    }
+                }
+        }
     }
 }

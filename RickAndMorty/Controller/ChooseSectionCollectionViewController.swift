@@ -35,13 +35,13 @@ class ChooseSectionCollectionViewController: ParentCollectionViewController {
     
         switch indexPath {
         case [0, 0]:
-            changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersCollectionViewController.rawValue)
+            changeSection(nameStoryboard:Constants.Storyboards.CharactersStoryboard.rawValue,  idVC: Constants.IdRootViewControllers.CharactersViewController.rawValue)
         case [0, 1]:
             changeSection(nameStoryboard: Constants.Storyboards.LocationsStoryboard.rawValue, idVC: Constants.IdRootViewControllers.LocationsViewController.rawValue)
             
         case [0, 2]:
            
-            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesCollectionViewController.rawValue)
+            changeSection(nameStoryboard: Constants.Storyboards.EpisodesStoryboard.rawValue, idVC: Constants.IdRootViewControllers.EpisodesViewController.rawValue)
             
         default:
             return

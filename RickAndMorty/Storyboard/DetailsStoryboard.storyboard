@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Details View Controller-->
+        <!--Detail Characters View Controller-->
         <scene sceneID="CYm-I7-Mah">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="8TT-SC-QRI" customClass="DetailsViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailCharactersViewController" id="8TT-SC-QRI" customClass="DetailCharactersViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OU3-MT-8Du">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,11 +105,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="characterImage" destination="6yL-5c-VJE" id="d4d-dB-dK7"/>
-                        <outlet property="genderLabel" destination="Lk0-pp-Aw3" id="CxY-wC-J0a"/>
-                        <outlet property="nameLabel" destination="2gG-RN-cVq" id="iDS-ye-bem"/>
-                        <outlet property="speciesLabel" destination="tKL-zq-hZB" id="AnN-Xh-W9E"/>
-                        <outlet property="statusLabel" destination="LwQ-Zn-Rr2" id="AMO-3c-gq8"/>
+                        <outlet property="avatarCharacter" destination="6yL-5c-VJE" id="wtw-mU-DiX"/>
+                        <outlet property="genderLabel" destination="Lk0-pp-Aw3" id="Gm6-Ct-9yC"/>
+                        <outlet property="nameLabel" destination="2gG-RN-cVq" id="PWX-qp-zPO"/>
+                        <outlet property="speciesLabel" destination="tKL-zq-hZB" id="gBn-j2-ClJ"/>
+                        <outlet property="statusLabel" destination="LwQ-Zn-Rr2" id="Ffl-Nf-JtK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3X-4J-OJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

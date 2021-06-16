@@ -2,30 +2,39 @@
 //  EpisodesPresenter.swift
 //  RickAndMorty
 //
-//  Created by Света Брасс on 14.06.21.
+//  Created by Света Брасс on 15.06.21.
+//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol EpisodesPresenterProtocol {
-    init(viewController: EpisodesCollectionViewProtocol)
-    func presentData(data: EpisodeData)
+protocol EpisodesPresentationLogic {
+  func presentData(response: Episodes.Model.Response.ResponseType)
 }
 
-class EpisodesPresenter: EpisodesPresenterProtocol {
+class EpisodesPresenter: EpisodesPresentationLogic {
+  
+  weak var viewController: EpisodesDisplayLogic?
+  
+  func presentData(response: Episodes.Model.Response.ResponseType) {
+    switch response {
     
-    
-    private var episodes: [Episode]?
-    var viewController: EpisodesCollectionViewProtocol?
-    required init(viewController: EpisodesCollectionViewProtocol) {
-        self.viewController = viewController
-    }
-    func presentData(data: EpisodeData) {
-        if let result = data.results {
-        viewController?.displayData(data: result )
-        print(data)
+    case .presentEpisodes(episode: let episode):
+        
+        let cells = episode.map{ (episode) in
+            cellViewModel(from: episode)
         }
+       
+        
+        let episodeModel = EpisodesModel.init(cells: cells)
+        
+        viewController?.displayData(viewModel: .displayEpisodes(episodeModel: episodeModel))
     }
-    
-    
+  }
+    func cellViewModel(from episodes: Episode) -> EpisodesModel.Cell {
+        return EpisodesModel.Cell.init(characters: episodes.characters, date: episodes.airDate, number: episodes.episode, name: episodes.name ?? "No name")
+            
+            
+    }
+  
 }

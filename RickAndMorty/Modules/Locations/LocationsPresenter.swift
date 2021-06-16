@@ -28,11 +28,10 @@ class LocationsPresenter: LocationsPresentationLogic {
        viewController?.displayData(viewModel: .displayLocations(locationModel: locationModel))
         
     }
-    
-    
+
   }
   
     func cellViewModel(from locations: Location) -> LocationsModel.Cell {
-        return LocationsModel.Cell.init(name: locations.name ?? "", type: locations.type, dimension: locations.dimension, residents: locations.residents)
+        return LocationsModel.Cell.init(name: locations.name ?? "No name", type: locations.type, dimension: locations.dimension, residents: locations.residents)
     }
 }

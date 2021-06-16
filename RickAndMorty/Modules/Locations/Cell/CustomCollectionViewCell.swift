@@ -12,7 +12,16 @@ protocol CustomCollectionViewCellProtocol {
     var  dimension: String? { get }
     var residents: [String]? { get }
 }
+protocol EpisodesViewCellProtocol {
+    var name: String { get }
+    var number: String? { get }
+    var  date: String? { get }
+    var characters: [String]? { get }
+}
 
+protocol CellDelegate: class {
+    func didShowCharacters(characters: [String]?)
+}
 class CustomCollectionViewCell: UICollectionViewCell {
     
     
@@ -26,7 +35,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeThirdLabel: UILabel!
     @IBOutlet weak var typeFourthLabel: UILabel!
    
-    
+    weak var delegate: CellDelegate?
+    private var characters: [String]?
     override func awakeFromNib() {
         super.awakeFromNib()
         view.layer.cornerRadius = 10
@@ -35,7 +45,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func showСharacters(_ sender: UIButton) {
-        
+        guard let characters = characters else {
+            return
+        }
+        self.delegate?.didShowCharacters(characters: characters)
         
     }
     
@@ -43,7 +56,16 @@ class CustomCollectionViewCell: UICollectionViewCell {
         nameLabel.text = viewModel.name
         thirdLabel.text = viewModel.type
         secondLabel.text = viewModel.dimension
-    
+        characters = viewModel.residents
+      
+        
     }
     
+    func setEpisodes(viewModel: EpisodesViewCellProtocol) {
+        nameLabel.text = viewModel.name
+        thirdLabel.text = viewModel.number
+        secondLabel.text = viewModel.date
+        
+        
+    }
 }

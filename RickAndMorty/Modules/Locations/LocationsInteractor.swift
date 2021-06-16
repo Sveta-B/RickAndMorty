@@ -21,13 +21,13 @@ var locationData: LocationData?
     var networkManager: NetworkManagerProtocol?
     var pageNumber = 1
   func makeRequest(request: Locations.Model.Request.RequestType) {
+    networkManager = NetworkManager()
     if service == nil{
       service = LocationsService()
     }
     switch request {
     
     case .getLocations:
-        networkManager = NetworkManager()
         networkManager?.getData(nameSection: .location, typeResult: locationData, pageNumber: pageNumber) { [weak self] (result) in
             switch result {
             case .success(let data):
@@ -42,7 +42,7 @@ var locationData: LocationData?
             
         }
     case  .getMoreLocations:
-                networkManager = NetworkManager()
+                
                 networkManager?.getData(nameSection: .location, typeResult: locationData, pageNumber: pageNumber) { [weak self] (result) in
                     switch result {
                     case .success(let data):
@@ -55,8 +55,6 @@ var locationData: LocationData?
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
-            
-            
         
     }
     

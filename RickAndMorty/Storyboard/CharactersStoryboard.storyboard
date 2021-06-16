@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Characters Collection View Controller-->
+        <!--Characters View Controller-->
         <scene sceneID="GaA-9f-1lw">
             <objects>
-                <collectionViewController storyboardIdentifier="CharactersCollectionViewController" id="L4Z-ab-yob" customClass="CharactersCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController restorationIdentifier="CharactersViewController" storyboardIdentifier="CharactersViewController" id="L4Z-ab-yob" customClass="CharactersViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ORC-Xa-qcV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

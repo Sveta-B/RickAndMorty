@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Episodes Collection View Controller-->
+        <!--Episodes View Controller-->
         <scene sceneID="etG-7g-N4H">
             <objects>
-                <collectionViewController storyboardIdentifier="EpisodesCollectionViewController" id="Y4o-Vm-vk1" customClass="EpisodesCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="EpisodesViewController" id="Y4o-Vm-vk1" customClass="EpisodesViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ul5-dc-i85">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

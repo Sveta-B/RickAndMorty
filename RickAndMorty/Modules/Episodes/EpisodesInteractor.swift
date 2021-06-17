@@ -3,7 +3,6 @@
 //  RickAndMorty
 //
 //  Created by Света Брасс on 15.06.21.
-//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -14,54 +13,45 @@ protocol EpisodesBusinessLogic {
 
 class EpisodesInteractor: EpisodesBusinessLogic {
 
-  var presenter: EpisodesPresentationLogic?
-  var service: EpisodesService?
-    var episodeData: EpisodeData?
-        var episodes: [Episode]?
-        var networkManager: NetworkManagerProtocol?
-        var pageNumber = 1
-  func makeRequest(request: Episodes.Model.Request.RequestType)
+    var presenter: EpisodesPresentationLogic?
+    private var episodeData: EpisodeData?
+    private var episodes: [Episode]?
+    private var stringURL = "https://rickandmortyapi.com/api/episode"
+    private var networkManager: NetworkManagerProtocol?
+  
+    func makeRequest(request: Episodes.Model.Request.RequestType)
   
   {
     networkManager = NetworkManager()
-    if service == nil{
-      service = EpisodesService()
-    }
     switch request {
     
     case .getEpisodes:
-        networkManager?.getData(nameSection: .episode, typeResult: episodeData, pageNumber: pageNumber)
-        { [weak self] (result) in
+        networkManager?.fetchData(stringURL: stringURL, typeResult: episodeData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
                 self?.episodes = data.results
                 self?.presenter?.presentData(response: .presentEpisodes(episode: self?.episodes ?? []))
-                self?.pageNumber = 2
-                
+                self?.stringURL = data.info?.next ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
+        
+       
     case .getMoreEpisodes:
-        networkManager?.getData(nameSection: .episode, typeResult: episodeData, pageNumber: pageNumber)
-        { [weak self] (result) in
+        networkManager?.fetchData(stringURL: stringURL, typeResult: episodeData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
                 self?.episodes?.append(contentsOf: data.results ?? [])
-               
                 self?.presenter?.presentData(response: .presentEpisodes(episode: self?.episodes ?? []))
-                self?.pageNumber += 1
-                
+                self?.stringURL = data.info?.next ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
         }
-    
   }
   
 }

@@ -3,7 +3,6 @@
 //  RickAndMorty
 //
 //  Created by Света Брасс on 15.06.21.
-//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -34,7 +33,6 @@ enum Episodes {
 struct EpisodesModel {
     struct Cell: EpisodesViewCellProtocol {
         var characters: [String]?
-        
         var date: String?
         var number: String?
         var name: String

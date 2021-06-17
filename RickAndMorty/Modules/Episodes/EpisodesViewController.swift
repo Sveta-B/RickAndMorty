@@ -3,7 +3,6 @@
 //  RickAndMorty
 //
 //  Created by Света Брасс on 15.06.21.
-//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +14,7 @@ protocol EpisodesDisplayLogic: class {
 class EpisodesViewController: ParentCollectionViewController, EpisodesDisplayLogic {
   
     private var interactor: EpisodesBusinessLogic?
-    private var router: (NSObjectProtocol & EpisodesRoutingLogic)?
+    private(set) var router: (NSObjectProtocol & EpisodesRoutingLogic)?
     var episodes = EpisodesModel.init(cells: [])
 
   
@@ -63,13 +62,10 @@ class EpisodesViewController: ParentCollectionViewController, EpisodesDisplayLog
     }
   }
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if episodes.cells.count == 108 {
-            return
-        } else
+        
         if scrollView.contentOffset.y > scrollView.contentSize.height / 1.4 {
             interactor?.makeRequest(request: .getMoreEpisodes)
-        
-        }
+    }
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     

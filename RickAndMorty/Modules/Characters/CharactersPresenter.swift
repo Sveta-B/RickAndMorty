@@ -31,8 +31,9 @@ class CharactersPresenter: CharactersPresentationLogic {
   }
     
     func cellViewModel(from characters: Character) -> CharactersModel.Cell {
-        return CharactersModel.Cell.init(name: characters.name ?? "No name", image: characters.image)
-       
+        return CharactersModel.Cell.init(name: characters.name ?? "No name", image: characters.image, status: characters.status.map { $0
+                                            .rawValue }, gender: characters.gender.map { $0.rawValue }, species: characters.species)
+        
         
     }
   

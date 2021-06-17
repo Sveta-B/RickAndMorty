@@ -62,8 +62,8 @@
             filePath = "RickAndMorty/Modules/Episodes/EpisodesPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "presentData(response:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "RickAndMorty/Modules/Locations/LocationsInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "makeRequest(request:)"
             landmarkType = "7">
             <Locations>
@@ -119,70 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1CBFA020-1A44-46F6-B8D8-C7955242A436"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickAndMorty/Modules/Characters/CharactersInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "makeRequest(request:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A77312F1-19BE-4582-A9C6-3A83928AA39E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickAndMorty/Modules/DetailsCharacter/DetailCharactersViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "displayData(viewModel:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A77312F1-19BE-4582-A9C6-3A83928AA39E - ee7c577b00e95138"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickAndMorty.DetailCharactersViewController.displayData(viewModel: RickAndMorty.DetailCharacters.Model.ViewModel.ViewModelData) -&gt; ()"
-                  moduleName = "RickAndMorty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/svetabrass/Documents/Developer/RickAndMorty/RickAndMorty/Modules/DetailsCharacter/DetailCharactersViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "A77312F1-19BE-4582-A9C6-3A83928AA39E - ee7c577b00e95138"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickAndMorty.DetailCharactersViewController.displayData(viewModel: RickAndMorty.DetailCharacters.Model.ViewModel.ViewModelData) -&gt; ()"
-                  moduleName = "RickAndMorty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/svetabrass/Documents/Developer/RickAndMorty/RickAndMorty/Modules/DetailsCharacter/DetailCharactersViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "164">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "6C0DFC9E-A9D4-466A-9BAA-09C676DD3AF8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -190,8 +126,8 @@
             filePath = "RickAndMorty/Modules/DetailsCharacter/DetailCharactersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,10 +142,73 @@
             filePath = "RickAndMorty/Modules/Characters/CharactersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C40B1A2-E11B-4395-A597-B9CF2652A27A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty/Modules/Characters/CharactersRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "CharactersRouter"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "4C40B1A2-E11B-4395-A597-B9CF2652A27A - 2e4019466a14ff1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharactersRouter.__deallocating_deinit"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/svetabrass/Documents/Developer/RickAndMorty/RickAndMorty/Modules/Characters/CharactersRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "4C40B1A2-E11B-4395-A597-B9CF2652A27A - a140afa24423c862"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharactersRouter.__allocating_init() -&gt; RickAndMorty.CharactersRouter"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/svetabrass/Documents/Developer/RickAndMorty/RickAndMorty/Modules/Characters/CharactersRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "4C40B1A2-E11B-4395-A597-B9CF2652A27A - 75f0f7b8f2dc2e60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharactersRouter.init() -&gt; RickAndMorty.CharactersRouter"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/svetabrass/Documents/Developer/RickAndMorty/RickAndMorty/Modules/Characters/CharactersRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

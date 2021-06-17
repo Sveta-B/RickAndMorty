@@ -11,50 +11,58 @@ protocol CharactersBusinessLogic {
   func makeRequest(request: Characters.Model.Request.RequestType)
 }
 
-class CharactersInteractor: CharactersBusinessLogic {
+protocol CharactersStoreProtocol {
+    var charactersURL: [String]? { get set }
+}
 
-  var presenter: CharactersPresentationLogic?
-  var service: CharactersService?
-  var characterData: CharacterData?
-  var characters: [Character]?
+class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
+    var charactersURL: [String]? 
+    
+    
+
+    private var stringURL = "https://rickandmortyapi.com/api/character"
+    private var characterData: CharacterData?
+    private var characters: [Character]?
   var networkManager: NetworkManagerProtocol?
-  var pageNumber = 1
+  var presenter: CharactersPresentationLogic?
   
   func makeRequest(request: Characters.Model.Request.RequestType) {
     networkManager = NetworkManager()
-    if service == nil{
-      service = CharactersService()
-    }
     
     switch request {
    
     case .getCharacters:
-        networkManager?.getData(nameSection: .character, typeResult: characterData, pageNumber: pageNumber) { [weak self] (result) in
+        networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
+        { [weak self] (result) in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
-             
                 self?.characters = data.results
                 self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
-                self?.pageNumber = 2
+                self?.stringURL = data.info.next ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
             
         }
+        
     case .getMoreCharacters:
-        networkManager?.getData(nameSection: .character, typeResult: characterData, pageNumber: pageNumber) { [weak self] (result) in
+        networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
+        { [weak self] (result) in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
                 self?.characters?.append(contentsOf:data.results)
                 self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
-                self?.pageNumber += 1
+                self?.stringURL = data.info.next ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
             
         }
+        
+    case .getStringURLCharacters:
+        print(charactersURL)
     }
   }
   

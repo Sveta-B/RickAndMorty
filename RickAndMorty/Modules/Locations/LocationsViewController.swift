@@ -16,7 +16,7 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
     
   
  private var interactor: LocationsBusinessLogic?
-  private var router: (NSObjectProtocol & LocationsRoutingLogic)?
+  private var router: (NSObjectProtocol & LocationsRoutingLogic )?
 
     private var countRows: Int?
     var locations =  LocationsModel.init(cells: [])

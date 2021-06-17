@@ -14,51 +14,45 @@ protocol LocationsBusinessLogic {
 
 class LocationsInteractor: LocationsBusinessLogic {
 
-  var presenter: LocationsPresentationLogic?
-  var service: LocationsService?
-var locationData: LocationData?
-    var locations: [Location]?
-    var networkManager: NetworkManagerProtocol?
-    var pageNumber = 1
-  func makeRequest(request: Locations.Model.Request.RequestType) {
+    var presenter: LocationsPresentationLogic?
+    private var locationData: LocationData?
+    private var locations: [Location]?
+    private var networkManager: NetworkManagerProtocol?
+    private var stringURL = "https://rickandmortyapi.com/api/location"
+    func makeRequest(request: Locations.Model.Request.RequestType) {
     networkManager = NetworkManager()
-    if service == nil{
-      service = LocationsService()
-    }
     switch request {
     
     case .getLocations:
-        networkManager?.getData(nameSection: .location, typeResult: locationData, pageNumber: pageNumber) { [weak self] (result) in
+        networkManager?.fetchData(stringURL: stringURL, typeResult: locationData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
                 self?.locations = data.results
                 self?.presenter?.presentData(response: .presentLocations(locations: self?.locations ?? []))
-                self?.pageNumber = 2
-                
+                self?.stringURL = data.info.next
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
+        
     case  .getMoreLocations:
+        networkManager?.fetchData(stringURL: stringURL, typeResult: locationData) { [weak self] (result)  in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                self?.locations?.append(contentsOf: data.results)
+                self?.presenter?.presentData(response: .presentLocations(locations: self?.locations ?? []))
+                self?.stringURL = data.info.next
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
                 
-                networkManager?.getData(nameSection: .location, typeResult: locationData, pageNumber: pageNumber) { [weak self] (result) in
-                    switch result {
-                    case .success(let data):
-                        guard let data = data else { return }
-                        self?.locations?.append(contentsOf: data.results) 
-                        self?.presenter?.presentData(response: .presentLocations(locations: self?.locations ?? []))
-                        if self?.pageNumber ?? 0 <= 6 {
-                        self?.pageNumber += 1
-                        } else {return}
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
         
     }
     
   }
   
 }
-}
+

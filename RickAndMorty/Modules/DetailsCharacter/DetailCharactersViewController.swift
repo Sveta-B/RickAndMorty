@@ -7,11 +7,8 @@
 
 import UIKit
 
-protocol DetailCharactersDisplayLogic: class {
-  func displayData(viewModel: DetailCharacters.Model.ViewModel.ViewModelData)
-}
 
-class DetailCharactersViewController: UIViewController, DetailCharactersDisplayLogic {
+class DetailCharactersViewController: UIViewController {
 
     @IBOutlet weak var avatarCharacter: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,50 +16,31 @@ class DetailCharactersViewController: UIViewController, DetailCharactersDisplayL
     @IBOutlet weak var speciesLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     
-    
-   private var interactor: (DetailCharactersBusinessLogic & DetailCharactersStoreProtocol)?
-  var router: (NSObjectProtocol & DetailCharactersRoutingLogic & DetailCharactersDataPassingProtocol)!
-    var character: DetailCharacter?
-  
-  // MARK: Setup
-  
-  private func setup() {
-    let viewController        = self
-    let interactor            = DetailCharactersInteractor()
-    let router                = DetailCharactersRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    router.dataStore = interactor
-  }
+
+   
+     var character: DetailCharacter?
   
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setup()
-    interactor?.makeRequest(request: .getCharacter)
+    title = character?.name
     
-  }
-  
-  func displayData(viewModel: DetailCharacters.Model.ViewModel.ViewModelData) {
-    switch viewModel {
-
-    case .displayCharacters(characterModel: let characterModel):
-        nameLabel.text =  characterModel.name
-        genderLabel.text = characterModel.gender
-        statusLabel.text = characterModel.status
-        speciesLabel.text = characterModel.species
-        if let stringForImage = characterModel.image {
-                if let url = URL(string: stringForImage) {
-                    if  let data = try? Data(contentsOf: url) {
-        
-        avatarCharacter.image = UIImage(data: data)
-                    }
+    nameLabel.text =  character?.name
+    genderLabel.text = character?.gender
+    statusLabel.text = character?.status
+    speciesLabel.text = character?.species
+    if let stringForImage = character?.image {
+            if let url = URL(string: stringForImage) {
+                if  let data = try? Data(contentsOf: url) {
+    
+    avatarCharacter.image = UIImage(data: data)
                 }
-        }
+            }
     }
-
+    
+  }
     
   }
   
-}
+

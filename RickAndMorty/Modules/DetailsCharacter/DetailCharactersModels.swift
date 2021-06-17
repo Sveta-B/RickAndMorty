@@ -7,24 +7,7 @@
 
 import UIKit
 
-enum DetailCharacters {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case getCharacter
-      }
-    }
-    
-    struct ViewModel {
-      enum ViewModelData {
-        case displayCharacters(characterModel: DetailCharacter)
-      }
-    }
-  }
-  
-}
-struct DetailCharacter: Equatable  {
+struct DetailCharacter  {
         var name: String
         var image: String?
         var status: String?

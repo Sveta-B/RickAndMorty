@@ -13,24 +13,28 @@ protocol CharactersDisplayLogic: class {
 
 class CharactersViewController: ParentCollectionViewController, CharactersDisplayLogic {
   
-  private var interactor: CharactersBusinessLogic?
-  var router: (NSObjectProtocol & CharactersRoutingLogic)?
+    private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol)?
+    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic)?
+
     var characters =  CharactersModel.init(cells: [])
-  
-  // MARK: Setup
+    
+    // MARK: Setup
   
   private func setup() {
     let viewController        = self
     let interactor            = CharactersInteractor()
     let presenter             = CharactersPresenter()
     let router                = CharactersRouter()
-    viewController.interactor = interactor
     viewController.router     = router
+    router.viewController = viewController
+    viewController.interactor = interactor
     interactor.presenter      = presenter
     presenter.viewController  = viewController
     router.viewController     = viewController
+    router.dataStore = interactor
   }
   
+    
   // MARK: Routing
 
 
@@ -41,6 +45,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     super.viewDidLoad()
     title = "Characters"
     setup()
+    
     interactor?.makeRequest(request: .getCharacters)
     collectionView.register(UINib(nibName:
                                   Constants.NibName.CharacterCollectionViewCell.rawValue,
@@ -59,7 +64,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
   }
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
        
-        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.4 {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.8 {
             interactor?.makeRequest(request: .getMoreCharacters)
         
         
@@ -69,14 +74,13 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
         return characters.cells.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
         let character = characters.cells[indexPath.item]
-        
+
         cell.set(viewModel: character)
         return cell
     }
@@ -85,7 +89,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
          let  characterModel  = self.characters.cells[indexPath.item]
-        let character = DetailCharacter(name: characterModel.name, image: characterModel.image, status: characterModel.status, gender: characterModel.gender, species: characterModel.species)
+        let character = DetailCharacter(name: characterModel.name ?? "No name", image: characterModel.image, status: characterModel.status, gender: characterModel.gender, species: characterModel.species)
         router?.showDetailsCharacter(character: character)
            
             

@@ -20,10 +20,17 @@ class LocationsRouter: NSObject, LocationsRoutingLogic {
   // MARK: Routing
     func navigateCharacters(characters: [String]) {
         let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
-            guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? UICollectionViewController else { return }
-           
-            secondViewController.modalPresentationStyle = .fullScreen
-        viewController?.navigationController?.show(secondViewController, sender: nil)
+            guard let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? CharactersViewController else { return }
+        if characters.isEmpty {
+            let storyboard = UIStoryboard(name: Constants.Storyboards.EmptyStoryboard.rawValue, bundle: nil)
+           let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EmptyViewController.rawValue)
+            viewController?.navigationController?.show(charactersViewController, sender: nil)
+            
+        } else {
+            charactersViewController.router?.dataStore?.charactersURL = characters
+            print(charactersViewController.router?.dataStore?.charactersURL)
+        charactersViewController.modalPresentationStyle = .fullScreen
+        viewController?.navigationController?.show(charactersViewController, sender: nil)
     }
-    
+    }
 }

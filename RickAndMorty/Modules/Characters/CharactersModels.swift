@@ -14,6 +14,7 @@ enum Characters {
       enum RequestType {
         case getCharacters
         case getMoreCharacters
+        case getStringURLCharacters
       }
     }
     struct Response {
@@ -30,7 +31,7 @@ enum Characters {
 }
     struct CharactersModel  {
         struct Cell: CharactersCollectionViewCellProtocol {
-            var name: String
+            var name: String?
             var image: String?
             var status: String?
             var gender: String?

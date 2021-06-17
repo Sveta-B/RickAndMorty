@@ -15,6 +15,7 @@ protocol CharactersStoreProtocol {
     var charactersURL: [String]? { get set }
 }
 
+
 class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
     var charactersURL: [String]? 
     
@@ -22,7 +23,8 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
 
     private var stringURL = "https://rickandmortyapi.com/api/character"
     private var characterData: CharacterData?
-    private var characters: [Character]?
+    private var characters = [Character]()
+    private var character: Character?
   var networkManager: NetworkManagerProtocol?
   var presenter: CharactersPresentationLogic?
   
@@ -32,6 +34,26 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
     switch request {
    
     case .getCharacters:
+        if charactersURL != nil {
+            for url in charactersURL! {
+                
+            networkManager?.fetchData(stringURL: url, typeResult: character) { [weak self](result) in
+                switch result {
+                case .success(let data):
+                    guard let data = data else { return }
+                    self?.characters.append(data)
+                        self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
+                   
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+            }
+              
+            }
+            
+            
+        } else {
         networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
         { [weak self] (result) in
             switch result {
@@ -45,6 +67,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
             }
             
         }
+        }
         
     case .getMoreCharacters:
         networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
@@ -52,7 +75,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
             switch result {
             case .success(let data):
                 guard let data = data else { return }
-                self?.characters?.append(contentsOf:data.results)
+                self?.characters.append(contentsOf:data.results)
                 self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
                 self?.stringURL = data.info.next ?? ""
             case .failure(let error):
@@ -61,8 +84,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
             
         }
         
-    case .getStringURLCharacters:
-        print(charactersURL)
+   
     }
   }
   

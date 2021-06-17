@@ -26,7 +26,7 @@ class CharactersPresenter: CharactersPresentationLogic {
             let characterModel = CharactersModel.init(cells: cells)
         viewController?.displayData(viewModel: .displayCharacters(charactersModel: characterModel))
             
-        }
+    
     }
   }
     
@@ -38,4 +38,4 @@ class CharactersPresenter: CharactersPresentationLogic {
     }
   
 
-
+}

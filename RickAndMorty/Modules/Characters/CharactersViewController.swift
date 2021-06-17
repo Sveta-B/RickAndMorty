@@ -16,8 +16,18 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol)?
     var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic)?
 
-    var characters =  CharactersModel.init(cells: [])
+    private var characters =  CharactersModel.init(cells: [])
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+        
+    }
     // MARK: Setup
   
   private func setup() {
@@ -44,7 +54,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Characters"
-    setup()
+
     
     interactor?.makeRequest(request: .getCharacters)
     collectionView.register(UINib(nibName:
@@ -63,7 +73,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     }
   }
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-       
+       // TODO - Обработать случай, когда больше загружать не надо. При переходе с других модулей
         if scrollView.contentOffset.y > scrollView.contentSize.height / 1.8 {
             interactor?.makeRequest(request: .getMoreCharacters)
         

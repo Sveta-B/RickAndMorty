@@ -142,8 +142,8 @@
             filePath = "RickAndMorty/Modules/Characters/CharactersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,10 +158,10 @@
             filePath = "RickAndMorty/Modules/Characters/CharactersRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "CharactersRouter"
-            landmarkType = "3">
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "4C40B1A2-E11B-4395-A597-B9CF2652A27A - 2e4019466a14ff1d"

@@ -28,7 +28,6 @@ class LocationsRouter: NSObject, LocationsRoutingLogic {
             
         } else {
             charactersViewController.router?.dataStore?.charactersURL = characters
-            print(charactersViewController.router?.dataStore?.charactersURL)
         charactersViewController.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.show(charactersViewController, sender: nil)
     }

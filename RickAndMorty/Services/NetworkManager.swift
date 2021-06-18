@@ -13,7 +13,7 @@ protocol NetworkManagerProtocol {
 
 
 struct NetworkManager: NetworkManagerProtocol {
- let baseURL = "https://rickandmortyapi.com/api/"
+ 
     
     func fetchData<T: Codable>(stringURL: String, typeResult: T?,completionHandler: @escaping (Result<T?, Error>) -> Void)  {
         var json = typeResult

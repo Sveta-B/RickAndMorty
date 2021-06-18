@@ -11,22 +11,23 @@ protocol EpisodesBusinessLogic {
   func makeRequest(request: Episodes.Model.Request.RequestType)
 }
 
-class EpisodesInteractor: EpisodesBusinessLogic {
-
-    var presenter: EpisodesPresentationLogic?
+class EpisodesInteractor: EpisodesBusinessLogic, URLStoreProtocol {
+    
+    // MARK: Properties
+    
     private var episodeData: EpisodeData?
     private var episodes: [Episode]?
-    private var stringURL = "https://rickandmortyapi.com/api/episode"
-    private var networkManager: NetworkManagerProtocol?
+    var stringURL: String?
+    var presenter: EpisodesPresentationLogic?
+    var networkManager: NetworkManagerProtocol?
   
-    func makeRequest(request: Episodes.Model.Request.RequestType)
-  
-  {
-    networkManager = NetworkManager()
+    // MARK: EpisodesBusinessLogic
+    
+    func makeRequest(request: Episodes.Model.Request.RequestType) {
     switch request {
     
     case .getEpisodes:
-        networkManager?.fetchData(stringURL: stringURL, typeResult: episodeData) { [weak self] (result)  in
+        networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: episodeData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -37,10 +38,9 @@ class EpisodesInteractor: EpisodesBusinessLogic {
                 print(error.localizedDescription)
             }
         }
-        
-       
+
     case .getMoreEpisodes:
-        networkManager?.fetchData(stringURL: stringURL, typeResult: episodeData) { [weak self] (result)  in
+        networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: episodeData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -53,5 +53,4 @@ class EpisodesInteractor: EpisodesBusinessLogic {
         }
         }
   }
-  
 }

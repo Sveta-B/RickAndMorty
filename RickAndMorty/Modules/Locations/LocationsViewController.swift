@@ -13,14 +13,24 @@ protocol LocationsDisplayLogic: class {
 
 class LocationsViewController:ParentCollectionViewController , LocationsDisplayLogic, CellDelegate {
     
+    // MARK: Properties
     
-  
- private var interactor: LocationsBusinessLogic?
-  private var router: (NSObjectProtocol & LocationsRoutingLogic )?
-
-    private var countRows: Int?
+    private var interactor: (LocationsBusinessLogic & URLStoreProtocol)?
+    var router: (LocationsRoutingLogic & URLPassingProtocol)?
     var locations =  LocationsModel.init(cells: [])
   
+    // MARK: Initialization
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+        
+    }
   
   // MARK: Setup
   
@@ -29,17 +39,20 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
     let interactor            = LocationsInteractor()
     let presenter             = LocationsPresenter()
     let router                = LocationsRouter()
+    let networkManager        = NetworkManager()
+    interactor.networkManager = networkManager
     viewController.interactor = interactor
     viewController.router     = router
     interactor.presenter      = presenter
     presenter.viewController  = viewController
     router.viewController     = viewController
+    router.urlStore = interactor
   }
   
   // MARK: Routing
+    
     func didShowCharacters(characters: [String]?) {
         router?.navigateCharacters(characters: characters ?? [])
-        
     }
 
   
@@ -48,7 +61,6 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Locations"
-    setup()
     
     interactor?.makeRequest(request: .getLocations)
     collectionView.register(UINib(nibName:
@@ -58,43 +70,36 @@ class LocationsViewController:ParentCollectionViewController , LocationsDisplayL
                                   Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue)
   }
 
+    // MARK: LocationsDisplayLogic
+    
   func displayData(viewModel: Locations.Model.ViewModel.ViewModelData) {
     switch viewModel {
-    
     case .displayLocations(locationModel: let locationModel):
-  
         locations = locationModel
         collectionView.reloadData()
     }
   }
     
+    // MARK: DidEndDragging
+    
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if locations.cells.count == 108 {
-            return
-        } else
+        
         if scrollView.contentOffset.y > scrollView.contentSize.height / 1.4 {
         interactor?.makeRequest(request: .getMoreLocations)
-        
         }
     }
-    
     
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
         return locations.cells.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CustomCollectionViewCell.rawValue, for: indexPath) as! CustomCollectionViewCell
         let location = locations.cells[indexPath.item]
-        
         cell.set(viewModel: location)
         cell.delegate = self
         return cell
     }
-    
-    
-  
 }

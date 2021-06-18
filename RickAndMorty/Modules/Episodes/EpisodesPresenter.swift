@@ -13,8 +13,12 @@ protocol EpisodesPresentationLogic {
 
 class EpisodesPresenter: EpisodesPresentationLogic {
   
+    // MARK: Properties
+
   weak var viewController: EpisodesDisplayLogic?
   
+    // MARK: EpisodesPresentationLogic
+    
   func presentData(response: Episodes.Model.Response.ResponseType) {
     switch response {
     
@@ -26,7 +30,6 @@ class EpisodesPresenter: EpisodesPresentationLogic {
        
         
         let episodeModel = EpisodesModel.init(cells: cells)
-        
         viewController?.displayData(viewModel: .displayEpisodes(episodeModel: episodeModel))
     }
   }

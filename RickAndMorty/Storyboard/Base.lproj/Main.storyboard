@@ -11,7 +11,7 @@
         <!--Choose section-->
         <scene sceneID="EeY-Vp-TiJ">
             <objects>
-                <collectionViewController id="wzO-ph-7Yf" customClass="ChooseSectionCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="wzO-ph-7Yf" customClass="ChooseSectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="ew0-5J-LjN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

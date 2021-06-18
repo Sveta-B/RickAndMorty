@@ -13,30 +13,34 @@ protocol CharactersBusinessLogic {
 
 protocol CharactersStoreProtocol {
     var charactersURL: [String]? { get set }
+    
+}
+protocol URLStoreProtocol {
+    var stringURL: String? { get set }
 }
 
 
-class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
-    var charactersURL: [String]? 
+class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, URLStoreProtocol {
+   
+    // MARK: Properties
     
-    
-
-    private var stringURL = "https://rickandmortyapi.com/api/character"
     private var characterData: CharacterData?
     private var characters = [Character]()
     private var character: Character?
-  var networkManager: NetworkManagerProtocol?
-  var presenter: CharactersPresentationLogic?
+    var charactersURL: [String]?
+    var stringURL: String?
+    var networkManager: NetworkManagerProtocol?
+    var presenter: CharactersPresentationLogic?
   
-  func makeRequest(request: Characters.Model.Request.RequestType) {
-    networkManager = NetworkManager()
+    // MARK: CharactersBusinessLogic
     
+  func makeRequest(request: Characters.Model.Request.RequestType) {
+   
     switch request {
    
     case .getCharacters:
         if charactersURL != nil {
             for url in charactersURL! {
-                
             networkManager?.fetchData(stringURL: url, typeResult: character) { [weak self](result) in
                 switch result {
                 case .success(let data):
@@ -47,15 +51,10 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-                
             }
-              
             }
-            
-            
-        } else {
-        networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
-        { [weak self] (result) in
+        } else { characters.removeAll()
+            networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: characterData) { [weak self] (result) in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -65,12 +64,12 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
         }
         
     case .getMoreCharacters:
-        networkManager?.fetchData(stringURL: stringURL, typeResult: characterData)
+        
+        networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: characterData)
         { [weak self] (result) in
             switch result {
             case .success(let data):
@@ -84,8 +83,38 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol {
             
         }
         
-   
+    case .getFilterCharacters(text: let text):
+        print(characters)
+     characters.map { (character)  in
+      
+            if character.name?.lowercased().contains(text.lowercased()) == nil {
+                characters.removeAll()
+                characters.append(character)
+            }
+        
+        else {
+                characters.removeAll()
+                networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: characterData)
+        { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                data.results.map { (character)  in
+                    if character.name?.lowercased().contains(text.lowercased()) != nil {
+                        self?.characters.append(character)
+
+                    }
+                }
+                
+                self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
+                self?.stringURL = data.info.next ?? ""
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+                }
+        }
     }
-  }
-  
+    }
 }
+}
+

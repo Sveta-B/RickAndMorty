@@ -9,22 +9,26 @@ import UIKit
 
 protocol LocationsBusinessLogic {
   func makeRequest(request: Locations.Model.Request.RequestType)
-  
 }
 
-class LocationsInteractor: LocationsBusinessLogic {
-
-    var presenter: LocationsPresentationLogic?
+class LocationsInteractor: LocationsBusinessLogic , URLStoreProtocol {
+    
+    // MARK: Properties
+    
+    
     private var locationData: LocationData?
-    private var locations: [Location]?
-    private var networkManager: NetworkManagerProtocol?
-    private var stringURL = "https://rickandmortyapi.com/api/location"
+    private var locations = [Location]()
+    var stringURL: String?
+    var networkManager: NetworkManagerProtocol?
+    var presenter: LocationsPresentationLogic?
+    
+    // MARK: LocationsBusinessLogic
+    
     func makeRequest(request: Locations.Model.Request.RequestType) {
-    networkManager = NetworkManager()
     switch request {
     
     case .getLocations:
-        networkManager?.fetchData(stringURL: stringURL, typeResult: locationData) { [weak self] (result)  in
+        networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: locationData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -37,22 +41,18 @@ class LocationsInteractor: LocationsBusinessLogic {
         }
         
     case  .getMoreLocations:
-        networkManager?.fetchData(stringURL: stringURL, typeResult: locationData) { [weak self] (result)  in
+        networkManager?.fetchData(stringURL: stringURL ?? "", typeResult: locationData) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
-                self?.locations?.append(contentsOf: data.results)
+                self?.locations.append(contentsOf: data.results)
                 self?.presenter?.presentData(response: .presentLocations(locations: self?.locations ?? []))
                 self?.stringURL = data.info.next
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-                
-        
     }
-    
   }
-  
 }
 

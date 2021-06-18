@@ -11,12 +11,17 @@ protocol CharactersDisplayLogic: class {
   func displayData(viewModel: Characters.Model.ViewModel.ViewModelData)
 }
 
-class CharactersViewController: ParentCollectionViewController, CharactersDisplayLogic {
-  
-    private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol)?
-    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic)?
-
-    private var characters =  CharactersModel.init(cells: [])
+class CharactersViewController: ParentCollectionViewController, CharactersDisplayLogic, UISearchBarDelegate, UISearchResultsUpdating {
+    
+    // MARK: Properties
+    
+    private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol & URLStoreProtocol)?
+    let searchController = CustomSearchController()
+    var characters =  CharactersModel.init(cells: [])
+    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol)?
+    //var searchCharacters = CharactersModel.init(cells: [])
+    
+    // MARK: Initialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -35,26 +40,27 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     let interactor            = CharactersInteractor()
     let presenter             = CharactersPresenter()
     let router                = CharactersRouter()
-    viewController.router     = router
-    router.viewController = viewController
+    let networkManager        = NetworkManager()
+    interactor.networkManager = networkManager
     viewController.interactor = interactor
+    viewController.router     = router
     interactor.presenter      = presenter
     presenter.viewController  = viewController
     router.viewController     = viewController
     router.dataStore = interactor
+    router.urlStore = interactor
   }
   
     
-  // MARK: Routing
-
-
   
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Characters"
-
+   // searchCharacters = characters
+    searchController.searchBar.delegate = self
+    navigationItem.searchController = searchController
     
     interactor?.makeRequest(request: .getCharacters)
     collectionView.register(UINib(nibName:
@@ -62,8 +68,11 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
                                   bundle: nil),
                                   forCellWithReuseIdentifier:
                                   Constants.ReuseIdentifier.CharactersCell.rawValue)
+    
   }
 
+    // MARK: CharactersDisplayLogic
+    
   func displayData(viewModel: Characters.Model.ViewModel.ViewModelData) {
     switch viewModel {
    
@@ -72,14 +81,19 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
         collectionView.reloadData()
     }
   }
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-       // TODO - Обработать случай, когда больше загружать не надо. При переходе с других модулей
-        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.8 {
-            interactor?.makeRequest(request: .getMoreCharacters)
-        
-        
-    }
     
+    // MARK: DidEndDragging
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if  interactor?.charactersURL == nil  {
+            if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
+                interactor?.makeRequest(request: .getMoreCharacters)
+            }
+    }
+        else {
+          
+            searchController.searchBar.isHidden = true
+        }
   }
     // MARK: UICollectionViewDataSource
 
@@ -96,14 +110,33 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     }
     
    // MARK: - Navigation
+    
        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
          let  characterModel  = self.characters.cells[indexPath.item]
         let character = DetailCharacter(name: characterModel.name ?? "No name", image: characterModel.image, status: characterModel.status, gender: characterModel.gender, species: characterModel.species)
         router?.showDetailsCharacter(character: character)
-           
-            
-           
   }
-  
+    
+    // MARK: - UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+       
+        searchBar(searchController.searchBar, textDidChange: text)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+            if searchText.isEmpty {
+                interactor?.makeRequest(request: .getCharacters)
+            } else {
+                searchBar.isSearchResultsButtonSelected = false
+            
+                if searchText.count  >= 3 {
+                interactor?.makeRequest(request: .getFilterCharacters(text: searchText))
+              
+                }
+            }
+        }
 }

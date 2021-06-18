@@ -12,10 +12,12 @@ protocol LocationsRoutingLogic {
 
 }
 
-class LocationsRouter: NSObject, LocationsRoutingLogic {
+class LocationsRouter: NSObject, LocationsRoutingLogic, URLPassingProtocol {
     
-
-  weak var viewController: LocationsViewController?
+    // MARK: Properties
+    
+    var urlStore: URLStoreProtocol?
+    weak var viewController: LocationsViewController?
   
   // MARK: Routing
     func navigateCharacters(characters: [String]) {

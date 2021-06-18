@@ -27,7 +27,6 @@ enum Episodes {
       }
     }
   }
-  
 }
 
 struct EpisodesModel {

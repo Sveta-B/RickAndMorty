@@ -10,7 +10,7 @@ protocol CustomCollectionViewCellProtocol {
     var name: String { get }
     var type: String? { get }
     var  dimension: String? { get }
-    var residents: [String]? { get }
+    var characters: [String]? { get }
 }
 protocol EpisodesViewCellProtocol {
     var name: String { get }
@@ -41,7 +41,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         view.layer.cornerRadius = 10
         view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        
     }
 
     @IBAction func showСharacters(_ sender: UIButton) {
@@ -49,23 +48,19 @@ class CustomCollectionViewCell: UICollectionViewCell {
             return
         }
         self.delegate?.didShowCharacters(characters: characters)
-        
     }
     
     func set(viewModel: CustomCollectionViewCellProtocol) {
         nameLabel.text = viewModel.name
         thirdLabel.text = viewModel.type
         secondLabel.text = viewModel.dimension
-        characters = viewModel.residents
-      
-        
+        characters = viewModel.characters
     }
     
     func setEpisodes(viewModel: EpisodesViewCellProtocol) {
         nameLabel.text = viewModel.name
         thirdLabel.text = viewModel.number
         secondLabel.text = viewModel.date
-        
-        
+        characters = viewModel.characters
     }
 }

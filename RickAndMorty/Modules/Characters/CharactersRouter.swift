@@ -15,18 +15,20 @@ protocol CharactersDataPassingProtocol {
     var dataStore: CharactersStoreProtocol? { get set }
 }
 
+protocol URLPassingProtocol {
+    var urlStore: URLStoreProtocol? { get set }
+}
 
-
-
-
-class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingProtocol {
+class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingProtocol, URLPassingProtocol {
+    var urlStore: URLStoreProtocol?
+    
+    // MARK: Properties
     
     var dataStore: CharactersStoreProtocol?
-    
-    
-  weak var viewController: CharactersViewController?
+    weak var viewController: CharactersViewController?
   
   // MARK: Routing
+    
     func showDetailsCharacter(character: DetailCharacter) {
         let storyboard = UIStoryboard(name: Constants.Storyboards.DetailsStoryboard.rawValue, bundle: nil)
         guard let characterViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.DetailCharactersViewController.rawValue)  as? DetailCharactersViewController else { return }

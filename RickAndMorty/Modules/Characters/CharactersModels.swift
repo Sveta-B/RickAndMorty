@@ -14,6 +14,7 @@ enum Characters {
       enum RequestType {
         case getCharacters
         case getMoreCharacters
+        case getFilterCharacters(text: String)
       }
     }
     struct Response {

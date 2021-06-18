@@ -9,7 +9,7 @@
         <!--Locations View Controller-->
         <scene sceneID="pUq-ym-z0D">
             <objects>
-                <collectionViewController storyboardIdentifier="LocationsViewController" id="xAo-nO-E2h" customClass="LocationsViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="LocationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xAo-nO-E2h" customClass="LocationsViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="enV-Um-lcF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

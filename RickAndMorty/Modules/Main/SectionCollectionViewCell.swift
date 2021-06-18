@@ -20,7 +20,5 @@ class SectionCollectionViewCell: UICollectionViewCell {
         imageForSection.contentMode = .scaleToFill
         viewForImage.layer.cornerRadius = 10
         viewForImage.layer.masksToBounds = true
-        
     }
-    
 }

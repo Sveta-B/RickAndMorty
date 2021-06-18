@@ -27,16 +27,14 @@ enum Locations {
       }
     }
   }
-  
 }
 
 struct LocationsModel {
     struct Cell: CustomCollectionViewCellProtocol {
-        
         var name: String
         var type: String?
         var dimension: String?
-        var residents: [String]?
+        var characters: [String]?
     
     }
     var cells: [Cell]

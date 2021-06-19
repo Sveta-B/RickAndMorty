@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CharactersCollectionViewCellProtocol {
-    var name: String? { get }
+    var name: String { get }
     var image: String? { get }
     var status: String? { get }
     var gender: String? { get }
@@ -36,7 +36,6 @@ class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate 
         if let stringForImage = viewModel.image {
                 if let url = URL(string: stringForImage) {
                     if  let data = try? Data(contentsOf: url) {
-        
         imageView.image = UIImage(data: data)
                     }
                 }

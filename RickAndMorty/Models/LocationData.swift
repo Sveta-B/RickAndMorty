@@ -20,7 +20,7 @@ struct LocationData: Codable {
     struct Location: Codable {
         let id: Int
         let name, type, dimension: String?
-        let residents: [String]
+        let residents: [String]?
         }
 
 

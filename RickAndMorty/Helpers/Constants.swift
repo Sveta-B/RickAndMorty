@@ -17,6 +17,7 @@ struct Constants {
         case DetailsStoryboard
         case EpisodesStoryboard
         case EmptyStoryboard
+        case FilterStoryboard
     }
     enum IdRootViewControllers: String {
         case LocationsViewController
@@ -24,6 +25,7 @@ struct Constants {
         case EpisodesViewController
         case DetailCharactersViewController
         case EmptyViewController
+        case FilterViewController
     }
     enum NibName: String {
     case CharacterCollectionViewCell

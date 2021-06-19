@@ -18,7 +18,8 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol & URLStoreProtocol)?
     let searchController = CustomSearchController()
     var characters =  CharactersModel.init(cells: [])
-    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol)?
+    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol & FilterTransferProtocol)?
+    let filterButton = UIButton()
     //var searchCharacters = CharactersModel.init(cells: [])
     
     // MARK: Initialization
@@ -62,6 +63,11 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     searchController.searchBar.delegate = self
     navigationItem.searchController = searchController
     
+    filterButton.setImage(#imageLiteral(resourceName: "icons8-filter-50"), for: .normal)
+    let barButton = UIBarButtonItem(customView: filterButton)
+    self.navigationItem.rightBarButtonItem = barButton
+    filterButton.addTarget(self, action: #selector(showFilterVC), for: .touchUpInside)
+    
     interactor?.makeRequest(request: .getCharacters)
     collectionView.register(UINib(nibName:
                                   Constants.NibName.CharacterCollectionViewCell.rawValue,
@@ -70,6 +76,10 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
                                   Constants.ReuseIdentifier.CharactersCell.rawValue)
     
   }
+    
+    @objc func  showFilterVC() {
+        router?.showFilterViewController()
+    }
 
     // MARK: CharactersDisplayLogic
     
@@ -104,7 +114,6 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifier.CharactersCell.rawValue, for: indexPath) as! CharacterCollectionViewCell
         let character = characters.cells[indexPath.item]
-
         cell.set(viewModel: character)
         return cell
     }
@@ -113,7 +122,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     
        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
          let  characterModel  = self.characters.cells[indexPath.item]
-        let character = DetailCharacter(name: characterModel.name ?? "No name", image: characterModel.image, status: characterModel.status, gender: characterModel.gender, species: characterModel.species)
+        let character = DetailCharacter(name: characterModel.name, image: characterModel.image, status: characterModel.status, gender: characterModel.gender, species: characterModel.species)
         router?.showDetailsCharacter(character: character)
   }
     

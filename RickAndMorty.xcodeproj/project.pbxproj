@@ -14,6 +14,12 @@
 		3F5E3A66267CA0CC00C0CE56 /* ChooseSectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5E3A5F267CA0CC00C0CE56 /* ChooseSectionModels.swift */; };
 		3F5E3A67267CA0CC00C0CE56 /* ChooseSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5E3A60267CA0CC00C0CE56 /* ChooseSectionViewController.swift */; };
 		3F5E3A68267CA0CC00C0CE56 /* ChooseSectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5E3A61267CA0CC00C0CE56 /* ChooseSectionInteractor.swift */; };
+		3F5FDB88267E5BAD0015254A /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FDB81267E5BAD0015254A /* FilterPresenter.swift */; };
+		3F5FDB8A267E5BAD0015254A /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FDB83267E5BAD0015254A /* FilterRouter.swift */; };
+		3F5FDB8B267E5BAD0015254A /* FilterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FDB84267E5BAD0015254A /* FilterModels.swift */; };
+		3F5FDB8C267E5BAD0015254A /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FDB85267E5BAD0015254A /* FilterViewController.swift */; };
+		3F5FDB8D267E5BAD0015254A /* FilterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FDB86267E5BAD0015254A /* FilterInteractor.swift */; };
+		3F5FDB94267E5C590015254A /* FilterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5FDB93267E5C590015254A /* FilterStoryboard.storyboard */; };
 		3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */; };
 		3F6A8D2426566CF800457894 /* CharactersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */; };
 		3F6A8D27265670AF00457894 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A8D26265670AF00457894 /* Constants.swift */; };
@@ -62,6 +68,12 @@
 		3F5E3A5F267CA0CC00C0CE56 /* ChooseSectionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSectionModels.swift; sourceTree = "<group>"; };
 		3F5E3A60267CA0CC00C0CE56 /* ChooseSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSectionViewController.swift; sourceTree = "<group>"; };
 		3F5E3A61267CA0CC00C0CE56 /* ChooseSectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSectionInteractor.swift; sourceTree = "<group>"; };
+		3F5FDB81267E5BAD0015254A /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
+		3F5FDB83267E5BAD0015254A /* FilterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
+		3F5FDB84267E5BAD0015254A /* FilterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModels.swift; sourceTree = "<group>"; };
+		3F5FDB85267E5BAD0015254A /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		3F5FDB86267E5BAD0015254A /* FilterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInteractor.swift; sourceTree = "<group>"; };
+		3F5FDB93267E5C590015254A /* FilterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterStoryboard.storyboard; sourceTree = "<group>"; };
 		3F6A8D1B265669DF00457894 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		3F6A8D2326566CF800457894 /* CharactersStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersStoryboard.storyboard; sourceTree = "<group>"; };
 		3F6A8D26265670AF00457894 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -118,6 +130,7 @@
 		3F358DA52677587F004F9178 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3F5FDB90267E5BB60015254A /* Filter */,
 				3F5E3A5B267CA0A200C0CE56 /* Main */,
 				3F8EC5EE267C83CD00B9BEE5 /* Search */,
 				3FCC77792679ECC300C9F539 /* Characters */,
@@ -151,6 +164,18 @@
 				3FC696B72652E3B0000881F2 /* SectionCollectionViewCell.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		3F5FDB90267E5BB60015254A /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				3F5FDB85267E5BAD0015254A /* FilterViewController.swift */,
+				3F5FDB86267E5BAD0015254A /* FilterInteractor.swift */,
+				3F5FDB81267E5BAD0015254A /* FilterPresenter.swift */,
+				3F5FDB83267E5BAD0015254A /* FilterRouter.swift */,
+				3F5FDB84267E5BAD0015254A /* FilterModels.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		3F7FC7AE267A0AC700DCDD4F /* DetailsCharacter */ = {
@@ -224,6 +249,7 @@
 				3FD78709265D04C100520A05 /* DetailsStoryboard.storyboard */,
 				3F2576362660EAA20093BFDB /* EpisodesStoryboard.storyboard */,
 				3F9DC66D267B399D00080CF3 /* EmptyStoryboard.storyboard */,
+				3F5FDB93267E5C590015254A /* FilterStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -370,6 +396,7 @@
 				3FD644482656D9C700B0B5C1 /* LocationsStoryboard.storyboard in Resources */,
 				3FE9CB5C265274F800401829 /* Assets.xcassets in Resources */,
 				3F6A8D1C265669DF00457894 /* CharacterCollectionViewCell.xib in Resources */,
+				3F5FDB94267E5C590015254A /* FilterStoryboard.storyboard in Resources */,
 				3FE9CB5A265274F700401829 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,8 +412,11 @@
 				3F2576342660E9140093BFDB /* EpisodeData.swift in Sources */,
 				3FC6974526544BD4000881F2 /* CharacterCollectionViewCell.swift in Sources */,
 				3FBB4205267896B50007C652 /* LocationsRouter.swift in Sources */,
+				3F5FDB8A267E5BAD0015254A /* FilterRouter.swift in Sources */,
 				3FCFB76326528C9C006F473A /* NavigationViewController.swift in Sources */,
 				3FDE8DAB266A0503001D1BFA /* CustomCollectionViewCell.swift in Sources */,
+				3F5FDB8B267E5BAD0015254A /* FilterModels.swift in Sources */,
+				3F5FDB88267E5BAD0015254A /* FilterPresenter.swift in Sources */,
 				3FD8370526793D1100677090 /* EpisodesModels.swift in Sources */,
 				3FC696B82652E3B0000881F2 /* SectionCollectionViewCell.swift in Sources */,
 				3F5E3A65267CA0CC00C0CE56 /* ChooseSectionRouter.swift in Sources */,
@@ -412,10 +442,12 @@
 				3FBB4206267896B50007C652 /* LocationsModels.swift in Sources */,
 				3FCC77712679ECB700C9F539 /* CharactersPresenter.swift in Sources */,
 				3FE9CB55265274F700401829 /* SceneDelegate.swift in Sources */,
+				3F5FDB8C267E5BAD0015254A /* FilterViewController.swift in Sources */,
 				3F6A8D27265670AF00457894 /* Constants.swift in Sources */,
 				3FBB4208267896B50007C652 /* LocationsInteractor.swift in Sources */,
 				3FCC77742679ECB700C9F539 /* CharactersModels.swift in Sources */,
 				3FCC77762679ECB700C9F539 /* CharactersInteractor.swift in Sources */,
+				3F5FDB8D267E5BAD0015254A /* FilterInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

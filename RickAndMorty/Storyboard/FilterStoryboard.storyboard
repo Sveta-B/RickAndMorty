@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ANu-E8-ODi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter View Controller-->
+        <scene sceneID="XMG-6u-Vfo">
+            <objects>
+                <viewController restorationIdentifier="FilterViewController" storyboardIdentifier="FilterViewController" id="ANu-E8-ODi" customClass="FilterViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ajc-Z4-c8e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="KeA-7i-9LR">
+                                <rect key="frame" x="32" y="96" width="350" height="33"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-KM-rWV">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.7019608021" green="0.80000001190000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQi-dt-8X3">
+                                        <rect key="frame" x="249" y="0.0" width="101" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.14901961389999999" green="0.1686274707" blue="0.20784312490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="statusResetButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="Adz-7I-AK4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UeT-lp-Bt8">
+                                <rect key="frame" x="32" y="145" width="153" height="112"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="sD7-pX-ah4">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJH-yw-2Cx">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="disabled" image="icons8-unchecked-radio-button-48-2"/>
+                                                <state key="selected">
+                                                    <imageReference key="image" image="icons8-checked-radio-button-48" symbolScale="large"/>
+                                                </state>
+                                                <state key="highlighted" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="OSY-Ce-Jdf"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANU-gY-J3D">
+                                                <rect key="frame" x="76" y="0.0" width="40" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="6V4-3l-i4n">
+                                        <rect key="frame" x="0.0" y="44" width="118.5" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-su-vdN">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="BQ0-hc-Fvh"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKc-oE-0DV">
+                                                <rect key="frame" x="76" y="0.0" width="42.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="RLh-Ah-6aO">
+                                        <rect key="frame" x="0.0" y="88" width="153" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Npo-6o-0RU">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="VT7-7c-D4u"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPk-RU-uRg">
+                                                <rect key="frame" x="76" y="0.0" width="77" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="aeC-H1-alB">
+                                <rect key="frame" x="32" y="337" width="350" height="33"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender " lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-Cw-rBL">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.7019608021" green="0.80000001190000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86w-yR-PDv">
+                                        <rect key="frame" x="261" y="0.0" width="89" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="genderResetButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="npO-sM-Sti"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5iY-XH-ddg">
+                                <rect key="frame" x="32" y="386" width="169" height="156"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="BSL-Pw-NtU">
+                                        <rect key="frame" x="0.0" y="0.0" width="139.5" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-vc-jYL">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="j3m-Di-9En"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Femaile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv0-vW-RIy">
+                                                <rect key="frame" x="76" y="0.0" width="63.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-nc-8t8">
+                                        <rect key="frame" x="0.0" y="44" width="115" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG9-51-J9b">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="75M-QR-pRU"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpJ-Mc-qiy">
+                                                <rect key="frame" x="76" y="0.0" width="39" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-hY-Jup">
+                                        <rect key="frame" x="0.0" y="88" width="169" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-bl-Aga">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="sOu-8N-lXe"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genderless" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYO-iX-i0G">
+                                                <rect key="frame" x="76" y="0.0" width="93" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="7Sa-n5-8Vw">
+                                        <rect key="frame" x="0.0" y="132" width="153" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJT-J8-5sc">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                </state>
+                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <connections>
+                                                    <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="jsa-6P-ObB"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfc-gn-snz">
+                                                <rect key="frame" x="76" y="0.0" width="77" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTp-E3-lEK">
+                                <rect key="frame" x="32" y="816" width="350" height="30"/>
+                                <state key="normal" title="Apply filters">
+                                    <color key="titleColor" red="0.7019608021" green="0.80000001190000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyFiltersAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="ewf-dh-3Fo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gPK-xR-d2I"/>
+                        <color key="backgroundColor" red="0.14901961389999999" green="0.1686274707" blue="0.20784312490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="KeA-7i-9LR" firstAttribute="top" secondItem="gPK-xR-d2I" secondAttribute="top" constant="52" id="7P4-LP-Aib"/>
+                            <constraint firstItem="aeC-H1-alB" firstAttribute="top" secondItem="UeT-lp-Bt8" secondAttribute="bottom" constant="80" id="8AY-zb-REz"/>
+                            <constraint firstItem="gPK-xR-d2I" firstAttribute="bottom" secondItem="sTp-E3-lEK" secondAttribute="bottom" constant="16" id="CS2-4f-ZM3"/>
+                            <constraint firstItem="KeA-7i-9LR" firstAttribute="leading" secondItem="gPK-xR-d2I" secondAttribute="leading" constant="32" id="bFT-nV-Z2O"/>
+                            <constraint firstItem="gPK-xR-d2I" firstAttribute="trailing" secondItem="sTp-E3-lEK" secondAttribute="trailing" constant="32" id="bww-PZ-EC1"/>
+                            <constraint firstItem="gPK-xR-d2I" firstAttribute="trailing" secondItem="KeA-7i-9LR" secondAttribute="trailing" constant="32" id="f6X-AA-jaf"/>
+                            <constraint firstItem="UeT-lp-Bt8" firstAttribute="leading" secondItem="gPK-xR-d2I" secondAttribute="leading" constant="32" id="gcW-ge-DCc"/>
+                            <constraint firstItem="gPK-xR-d2I" firstAttribute="trailing" secondItem="aeC-H1-alB" secondAttribute="trailing" constant="32" id="jpG-If-JCW"/>
+                            <constraint firstItem="5iY-XH-ddg" firstAttribute="leading" secondItem="gPK-xR-d2I" secondAttribute="leading" constant="32" id="jvN-le-UrF"/>
+                            <constraint firstItem="UeT-lp-Bt8" firstAttribute="top" secondItem="KeA-7i-9LR" secondAttribute="bottom" constant="16" id="q05-xc-KvB"/>
+                            <constraint firstItem="sTp-E3-lEK" firstAttribute="leading" secondItem="gPK-xR-d2I" secondAttribute="leading" constant="32" id="t2Y-ZE-jvk"/>
+                            <constraint firstItem="5iY-XH-ddg" firstAttribute="top" secondItem="aeC-H1-alB" secondAttribute="bottom" constant="16" id="t8f-on-kwE"/>
+                            <constraint firstItem="aeC-H1-alB" firstAttribute="leading" secondItem="gPK-xR-d2I" secondAttribute="leading" constant="32" id="vxF-Op-iqA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aliveButton" destination="gJH-yw-2Cx" id="Ts7-ah-6vx"/>
+                        <outlet property="aliveLabel" destination="ANU-gY-J3D" id="bwY-vR-PAe"/>
+                        <outlet property="applyFiltersButton" destination="sTp-E3-lEK" id="g2w-0E-cZv"/>
+                        <outlet property="deadButton" destination="N7x-su-vdN" id="Udy-xQ-4lQ"/>
+                        <outlet property="deadLabel" destination="hKc-oE-0DV" id="TD6-rm-tkV"/>
+                        <outlet property="femaleButton" destination="7L0-vc-jYL" id="04t-3t-adh"/>
+                        <outlet property="femaleLabel" destination="tv0-vW-RIy" id="TqP-Kl-3vY"/>
+                        <outlet property="genderReset" destination="86w-yR-PDv" id="yyN-XF-T0Z"/>
+                        <outlet property="genderUnknownButton" destination="zJT-J8-5sc" id="K78-fx-7N7"/>
+                        <outlet property="genderUnknownLabel" destination="wfc-gn-snz" id="Hic-Kv-cgI"/>
+                        <outlet property="genderlessButton" destination="XSS-bl-Aga" id="Jrl-e9-fKP"/>
+                        <outlet property="genderlessLabel" destination="JYO-iX-i0G" id="mkt-fv-FhU"/>
+                        <outlet property="maleButton" destination="bG9-51-J9b" id="vfs-Pg-rRY"/>
+                        <outlet property="maleLabel" destination="cpJ-Mc-qiy" id="4Su-TI-A1a"/>
+                        <outlet property="statusReset" destination="eQi-dt-8X3" id="u0t-Lp-zV4"/>
+                        <outlet property="statusUnknownButton" destination="Npo-6o-0RU" id="jBG-db-EOu"/>
+                        <outlet property="statusUnknownLabel" destination="gPk-RU-uRg" id="v58-QT-Qhk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZw-Ju-Dtx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-211.59420289855075" y="144.64285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-checked-radio-button-48" width="24" height="24"/>
+        <image name="icons8-unchecked-radio-button-48-2" width="24" height="24"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

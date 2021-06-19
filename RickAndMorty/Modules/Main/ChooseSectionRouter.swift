@@ -44,18 +44,5 @@ class ChooseSectionRouter: NSObject, ChooseSectionRoutingLogic {
             viewController?.navigationController?.pushViewController(secondViewController, animated: true)
             secondViewController.router?.urlStore?.stringURL = url
         }
-       
     }
-    
-//    func moveVC(storyBoard: Constants.Storyboards, rootId: Constants.IdRootViewControllers) {
-//        let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
-//        guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? ParentCollectionViewController  else { return }
-//                secondViewController.modalPresentationStyle = .fullScreen
-//        viewController?.navigationController?.pushViewController(secondViewController, animated: true)
-//        secondViewController.router?.urlStore?.stringURL
-//
-//    }
-    
-
-  
 }

@@ -87,7 +87,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, U
         print(characters)
      characters.map { (character)  in
       
-            if character.name?.lowercased().contains(text.lowercased()) == nil {
+        if character.name.lowercased().contains(text.lowercased()) == nil {
                 characters.removeAll()
                 characters.append(character)
             }
@@ -100,7 +100,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, U
             case .success(let data):
                 guard let data = data else { return }
                 data.results.map { (character)  in
-                    if character.name?.lowercased().contains(text.lowercased()) != nil {
+                    if character.name.lowercased().contains(text.lowercased()) != nil {
                         self?.characters.append(character)
 
                     }

@@ -18,18 +18,16 @@ struct CharacterData: Codable {
 struct InfoCharacters: Codable {
     let count, pages: Int
     let next: String?
-    let prev: String?
 }
 
 // MARK: - Result
 struct Character: Codable {
     let id: Int?
-    let name: String?
+    let name: String
     let status: Status?
     let species: String?
     let gender: Gender?
     let image: String?
-    let url: String?
 }
 
 enum Gender: String, Codable {

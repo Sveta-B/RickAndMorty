@@ -19,8 +19,14 @@ protocol URLStoreProtocol {
     var stringURL: String? { get set }
 }
 
+protocol FilterURLStoreProtocol {
+    var filterURL: String? { get set }
+}
 
-class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, URLStoreProtocol {
+
+class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, URLStoreProtocol, FilterURLStoreProtocol {
+   
+    
    
     // MARK: Properties
     
@@ -29,6 +35,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, U
     private var character: Character?
     var charactersURL: [String]?
     var stringURL: String?
+    var filterURL: String?
     var networkManager: NetworkManagerProtocol?
     var presenter: CharactersPresentationLogic?
   
@@ -83,8 +90,7 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, U
             
         }
         
-    case .getFilterCharacters(text: let text):
-        print(characters)
+    case .getSearchCharacters(text: let text):
      characters.map { (character)  in
       
         if character.name.lowercased().contains(text.lowercased()) == nil {
@@ -114,7 +120,44 @@ class CharactersInteractor: CharactersBusinessLogic,  CharactersStoreProtocol, U
                 }
         }
     }
+  
+    case .getFilterCharacters:
+        guard let url = filterURL else {
+            return
+        }
+        characters.removeAll()
+            networkManager?.fetchData(stringURL: url, typeResult: characterData)
+        { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                
+                self?.characters.append(contentsOf:data.results)
+                self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
+                self?.filterURL = data.info.next ?? ""
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
     }
-}
+    
+    case .getMoreFilterCharacters:
+        guard let url = filterURL else {
+            return
+        }
+        networkManager?.fetchData(stringURL: url, typeResult: characterData) 
+        { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                
+                self?.characters.append(contentsOf:data.results)
+                self?.presenter?.presentData(response: .presentCharacters(characters: self?.characters ?? []))
+                self?.filterURL = data.info.next ?? ""
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+    }
+    }
+  }
 }
 

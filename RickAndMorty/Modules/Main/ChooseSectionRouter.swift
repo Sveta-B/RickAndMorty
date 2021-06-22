@@ -31,7 +31,6 @@ class ChooseSectionRouter: NSObject, ChooseSectionRoutingLogic {
             viewController?.navigationController?.pushViewController(secondViewController, animated: true)
             secondViewController.router?.urlStore?.stringURL = url
         } else if name == "Locations" {
-            print(name)
             let storyboard = UIStoryboard(name: Constants.Storyboards.LocationsStoryboard.rawValue, bundle: nil)
             guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.LocationsViewController.rawValue)  as? LocationsViewController else { return }
                     secondViewController.modalPresentationStyle = .fullScreen

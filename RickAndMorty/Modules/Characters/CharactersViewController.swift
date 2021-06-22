@@ -15,10 +15,10 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     
     // MARK: Properties
     
-    private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol & URLStoreProtocol)?
+    private var interactor: (CharactersBusinessLogic & CharactersStoreProtocol & URLStoreProtocol & FilterURLStoreProtocol)?
     let searchController = CustomSearchController()
     var characters =  CharactersModel.init(cells: [])
-    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol & FilterTransferProtocol)?
+    var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol & FilterTransferProtocol & FilterURLPassingProtocol)?
     let filterButton = UIButton()
     //var searchCharacters = CharactersModel.init(cells: [])
     
@@ -50,6 +50,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     router.viewController     = viewController
     router.dataStore = interactor
     router.urlStore = interactor
+    router.filterURLStore = interactor
   }
   
     
@@ -69,6 +70,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     filterButton.addTarget(self, action: #selector(showFilterVC), for: .touchUpInside)
     
     interactor?.makeRequest(request: .getCharacters)
+
     collectionView.register(UINib(nibName:
                                   Constants.NibName.CharacterCollectionViewCell.rawValue,
                                   bundle: nil),
@@ -81,6 +83,11 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
         router?.showFilterViewController()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        interactor?.makeRequest(request: .getFilterCharacters)
+    }
+    
     // MARK: CharactersDisplayLogic
     
   func displayData(viewModel: Characters.Model.ViewModel.ViewModelData) {
@@ -95,13 +102,16 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     // MARK: DidEndDragging
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if  interactor?.charactersURL == nil  {
+        if  interactor?.charactersURL == nil, interactor?.filterURL == nil {
             if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
                 interactor?.makeRequest(request: .getMoreCharacters)
             }
     }
-        else {
+        else if interactor?.filterURL != nil  {
           
+            interactor?.makeRequest(request: .getMoreFilterCharacters)
+           
+        } else {
             searchController.searchBar.isHidden = true
         }
   }
@@ -143,9 +153,14 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
                 searchBar.isSearchResultsButtonSelected = false
             
                 if searchText.count  >= 3 {
-                interactor?.makeRequest(request: .getFilterCharacters(text: searchText))
+                interactor?.makeRequest(request: .getSearchCharacters(text: searchText))
               
                 }
             }
         }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }

@@ -23,7 +23,7 @@ struct NetworkManager: NetworkManagerProtocol {
     let dataTask = session.dataTask(with: url) {(data, response, error) in
         guard let data = data  else {return}
         
-        do { json = try? JSONDecoder().decode(T.self, from: data)
+        do { json = try JSONDecoder().decode(T.self, from: data)
             DispatchQueue.main.async {
             completionHandler(.success(json))
             }

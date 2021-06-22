@@ -4,7 +4,7 @@
 //
 //  Created by Света Брасс on 19.06.21.
 //
-
+import Foundation
 import UIKit
 
 protocol FilterDisplayLogic: class {
@@ -15,8 +15,10 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     
     // MARK: Properties
     
-  var interactor: FilterBusinessLogic?
-  var router: (NSObjectProtocol & FilterRoutingLogic)?
+    var interactor: FilterBusinessLogic?
+    var router: (NSObjectProtocol & FilterRoutingLogic)?
+    var status: String?
+    var gender: String?
     
     // MARK: @IBOutlets
     
@@ -68,9 +70,6 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     router.viewController     = viewController
   }
   
-  // MARK: Routing
-  
-
   
   // MARK: View lifecycle
   
@@ -85,7 +84,37 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
   }
     
     @IBAction func applyFiltersAction(_ sender: UIButton) {
-        print("filters")
+        if aliveButton.isSelected {
+            status = "alive"
+        } else if deadButton.isSelected {
+            status = "dead"
+        } else if statusUnknownButton.isSelected {
+            status = "unknown"
+        }
+        
+        if femaleButton.isSelected {
+            gender = "female"
+        } else if maleButton.isSelected {
+            gender = "male"
+        } else if genderlessButton.isSelected {
+            gender = "genderless"
+        } else if genderUnknownButton.isSelected {
+            gender = "unknown"
+        }
+        
+        
+        let index =  (self.navigationController?.viewControllers.count ?? 0) - 2
+        let destinationVC = self.navigationController?.viewControllers[index]  as! CharactersViewController
+       
+        
+        var urlComponent = URLComponents(string: "https://rickandmortyapi.com/api/character/")
+        let queryItemGender = URLQueryItem(name: "gender", value: gender)
+        let queryItemStatus = URLQueryItem(name: "status", value: status)
+        urlComponent?.queryItems = [queryItemGender, queryItemStatus]
+       
+        destinationVC.router?.filterURLStore?.filterURL = urlComponent?.url?.absoluteString
+        self.navigationController?.popViewController(animated: true)
+        
         
     }
     

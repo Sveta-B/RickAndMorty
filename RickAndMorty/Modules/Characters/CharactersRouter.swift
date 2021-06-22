@@ -19,17 +19,21 @@ protocol URLPassingProtocol {
     var urlStore: URLStoreProtocol? { get set }
 }
 
+protocol FilterURLPassingProtocol {
+    var filterURLStore: FilterURLStoreProtocol? { get set }
+}
+
 protocol FilterTransferProtocol {
     func  showFilterViewController()
 }
 
-class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingProtocol, URLPassingProtocol, FilterTransferProtocol {
-    
+class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingProtocol, URLPassingProtocol, FilterTransferProtocol, FilterURLPassingProtocol {
   
     
     // MARK: Properties
     var urlStore: URLStoreProtocol?
     var dataStore: CharactersStoreProtocol?
+    var filterURLStore: FilterURLStoreProtocol?
     weak var viewController: CharactersViewController?
   
   // MARK: Routing
@@ -44,6 +48,7 @@ class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingP
     func showFilterViewController() {
         let storyboard = UIStoryboard(name: Constants.Storyboards.FilterStoryboard.rawValue, bundle: nil)
         guard let filterViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.FilterViewController.rawValue)  as? FilterViewController else { return }
+    
         viewController?.navigationController?.pushViewController(filterViewController, animated: true)
         
         

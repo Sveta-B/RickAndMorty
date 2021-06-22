@@ -23,13 +23,14 @@ class CharactersPresenter: CharactersPresentationLogic {
     switch response {
    
     case .presentCharacters(characters: let characters):
+        if characters.isEmpty {
+        }
+        
         let cells = characters.map { (character)  in
             cellViewModel(from: character)
         }
             let characterModel = CharactersModel.init(cells: cells)
         viewController?.displayData(viewModel: .displayCharacters(charactersModel: characterModel))
-            
-    
     }
   }
     

@@ -28,6 +28,7 @@ struct NetworkManager: NetworkManagerProtocol {
             completionHandler(.success(json))
             }
         } catch let error {
+            completionHandler(.failure(error))
             print(error.localizedDescription)
        }
     }

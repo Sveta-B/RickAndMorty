@@ -20,7 +20,7 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     var characters =  CharactersModel.init(cells: [])
     var router :  (CharactersDataPassingProtocol  & CharactersRoutingLogic & URLPassingProtocol & FilterTransferProtocol & FilterURLPassingProtocol)?
     let filterButton = UIButton()
-    //var searchCharacters = CharactersModel.init(cells: [])
+
     
     // MARK: Initialization
     
@@ -53,22 +53,21 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     router.filterURLStore = interactor
   }
   
-    
-  
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Characters"
-   // searchCharacters = characters
+    
     searchController.searchBar.delegate = self
     navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
+
+
+
     
-    filterButton.setImage(#imageLiteral(resourceName: "icons8-filter-50"), for: .normal)
-    let barButton = UIBarButtonItem(customView: filterButton)
-    self.navigationItem.rightBarButtonItem = barButton
-    filterButton.addTarget(self, action: #selector(showFilterVC), for: .touchUpInside)
-    
+    setFilterButton()
+
     interactor?.makeRequest(request: .getCharacters)
 
     collectionView.register(UINib(nibName:
@@ -79,14 +78,25 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     
   }
     
+    // MARK: Filter
+    
+    func setFilterButton()  {
+        filterButton.setImage(#imageLiteral(resourceName: "icons8-filter-50"), for: .normal)
+        let barButton = UIBarButtonItem(customView: filterButton)
+        self.navigationItem.rightBarButtonItem = barButton
+        filterButton.addTarget(self, action: #selector(showFilterVC), for: .touchUpInside)
+    }
+
     @objc func  showFilterVC() {
         router?.showFilterViewController()
     }
-
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         interactor?.makeRequest(request: .getFilterCharacters)
     }
+    
     
     // MARK: CharactersDisplayLogic
     
@@ -102,19 +112,12 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
     // MARK: DidEndDragging
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if  interactor?.charactersURL == nil, interactor?.filterURL == nil {
+          
             if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
                 interactor?.makeRequest(request: .getMoreCharacters)
             }
-    }
-        else if interactor?.filterURL != nil  {
-          
-            interactor?.makeRequest(request: .getMoreFilterCharacters)
-           
-        } else {
-            searchController.searchBar.isHidden = true
-        }
   }
+    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -149,18 +152,12 @@ class CharactersViewController: ParentCollectionViewController, CharactersDispla
 
             if searchText.isEmpty {
                 interactor?.makeRequest(request: .getCharacters)
+                collectionView.reloadData()
             } else {
-                searchBar.isSearchResultsButtonSelected = false
-            
                 if searchText.count  >= 3 {
                 interactor?.makeRequest(request: .getSearchCharacters(text: searchText))
-              
+                    collectionView.reloadData()
                 }
             }
         }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
 }

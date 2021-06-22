@@ -36,7 +36,9 @@ class CharacterCollectionViewCell: UICollectionViewCell, NSUserActivityDelegate 
         if let stringForImage = viewModel.image {
                 if let url = URL(string: stringForImage) {
                     if  let data = try? Data(contentsOf: url) {
+                        indicator.stopAnimating()
         imageView.image = UIImage(data: data)
+                        
                     }
                 }
         }

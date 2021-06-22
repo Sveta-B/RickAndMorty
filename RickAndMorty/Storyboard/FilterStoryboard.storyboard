@@ -244,7 +244,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTp-E3-lEK">
                                 <rect key="frame" x="32" y="816" width="350" height="30"/>
                                 <state key="normal" title="Apply filters">
-                                    <color key="titleColor" red="0.7019608021" green="0.80000001190000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.4196078479" green="0.86274516580000005" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="applyFiltersAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="ewf-dh-3Fo"/>

@@ -50,8 +50,7 @@ class CharactersRouter: NSObject, CharactersRoutingLogic, CharactersDataPassingP
         guard let filterViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.FilterViewController.rawValue)  as? FilterViewController else { return }
     
         viewController?.navigationController?.pushViewController(filterViewController, animated: true)
-        
-        
+ 
     }
     
 }

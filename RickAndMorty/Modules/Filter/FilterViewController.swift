@@ -131,7 +131,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     
     @IBAction func statusButtonAction(_ sender: UIButton) {
         if sender.tag == 0 {
-            self.aliveLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.aliveLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.deadLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.statusUnknownLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.aliveButton.isSelected = true
@@ -141,7 +141,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             applyFiltersButton.isEnabled = true
         } else if sender.tag == 1 {
             self.aliveLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.deadLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.deadLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.statusUnknownLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.aliveButton.isSelected = false
             self.deadButton.isSelected = true
@@ -151,7 +151,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             } else if sender.tag == 2 {
                 self.aliveLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 self.deadLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                self.statusUnknownLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+                self.statusUnknownLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
                 self.aliveButton.isSelected = false
                 self.deadButton.isSelected = false
                 self.statusUnknownButton.isSelected = true
@@ -178,7 +178,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     }
     @IBAction func genderButtonAction (_ sender: UIButton) {
         if sender.tag == 0 {
-            self.femaleLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.femaleLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderUnknownLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -190,7 +190,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             applyFiltersButton.isEnabled = true
         } else if sender.tag == 1 {
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            self.maleLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.maleLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderUnknownLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.femaleButton.isSelected = false
@@ -202,7 +202,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
         } else if sender.tag == 2 {
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            self.genderlessLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.genderlessLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.genderUnknownLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.femaleButton.isSelected = false
             self.maleButton.isSelected = false
@@ -214,7 +214,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            self.genderUnknownLabel.textColor = #colorLiteral(red: 0.6772206426, green: 0.8038287163, blue: 0.2435124815, alpha: 1)
+            self.genderUnknownLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.femaleButton.isSelected = false
             self.maleButton.isSelected = false
             self.genderlessButton.isSelected = false

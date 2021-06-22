@@ -25,8 +25,8 @@ class LocationsRouter: NSObject, LocationsRoutingLogic, URLPassingProtocol {
             guard let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? CharactersViewController else { return }
         if characters.isEmpty {
             let storyboard = UIStoryboard(name: Constants.Storyboards.EmptyStoryboard.rawValue, bundle: nil)
-           let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EmptyViewController.rawValue)
-            viewController?.navigationController?.show(charactersViewController, sender: nil)
+           let emptyViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EmptyViewController.rawValue)
+            viewController?.navigationController?.show(emptyViewController, sender: nil)
             
         } else {
             charactersViewController.router?.dataStore?.charactersURL = characters

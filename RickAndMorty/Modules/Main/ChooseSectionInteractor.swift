@@ -28,12 +28,12 @@ class ChooseSectionInteractor: ChooseSectionBusinessLogic {
     case .getSections:
         networkManager?.fetchData(stringURL: baseURL, typeResult: sectionsURL)
         { (url) in
-            url.map { (section)  in
+          print(url.map { (section)  in
                 guard let characters = section?.characters else  { return }
                 guard let locations = section?.locations else  { return }
                 guard let episodes = section?.episodes else  { return }
                 self.presenter?.presentData(response: .presentSections(characters: characters, locations: locations, episodes: episodes))
-            }
+            })
         }
     }
   }

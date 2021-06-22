@@ -13,9 +13,6 @@ protocol FilterBusinessLogic {
 
 class FilterInteractor: FilterBusinessLogic {
     
-   //  alive, dead or unknown
-    // female, male, genderless or unknown
-    let url = "https://rickandmortyapi.com/api/character/?gender=female&status=alive"
 
   var presenter: FilterPresentationLogic?
 

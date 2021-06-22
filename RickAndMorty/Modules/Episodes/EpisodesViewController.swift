@@ -102,6 +102,7 @@ class EpisodesViewController: ParentCollectionViewController, EpisodesDisplayLog
         cell.setEpisodes(viewModel: episode)
         cell.typeSecondLabel.text = "Number"
         cell.typeThirdLabel.text = "Date"
+        cell.typeFourthLabel.text = "Characters"
         cell.delegate = self
         return cell
     }

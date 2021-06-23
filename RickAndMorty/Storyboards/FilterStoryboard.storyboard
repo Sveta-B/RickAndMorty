@@ -146,7 +146,7 @@
                                 <rect key="frame" x="32" y="386" width="169" height="156"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="BSL-Pw-NtU">
-                                        <rect key="frame" x="0.0" y="0.0" width="139.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-vc-jYL">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -160,8 +160,8 @@
                                                     <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="j3m-Di-9En"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Femaile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv0-vW-RIy">
-                                                <rect key="frame" x="76" y="0.0" width="63.5" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv0-vW-RIy">
+                                                <rect key="frame" x="76" y="0.0" width="59" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

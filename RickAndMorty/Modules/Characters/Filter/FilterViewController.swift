@@ -7,15 +7,11 @@
 import Foundation
 import UIKit
 
-protocol FilterDisplayLogic: class {
-  func displayData(viewModel: Filter.Model.ViewModel.ViewModelData)
-}
 
-class FilterViewController: UIViewController, FilterDisplayLogic {
+class FilterViewController: UIViewController {
     
     // MARK: Properties
     
-    var interactor: FilterBusinessLogic?
     var router: (NSObjectProtocol & FilterRoutingLogic)?
     var status: String?
     var gender: String?
@@ -43,78 +39,60 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     @IBOutlet weak var maleLabel: UILabel!
     @IBOutlet weak var genderlessLabel: UILabel!
     @IBOutlet weak var genderUnknownLabel: UILabel!
-
+    
     // MARK: Initialization
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup() {
-    let viewController        = self
-    let interactor            = FilterInteractor()
-    let presenter             = FilterPresenter()
-    let router                = FilterRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
-  
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    statusReset.isEnabled = false
-    genderReset.isEnabled = false
-    applyFiltersButton.isEnabled = false
-   
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
     
-  }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController        = self
+        let router                = FilterRouter()
+        viewController.router     = router
+        router.viewController     = viewController
+    }
+    
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        statusReset.isEnabled = false
+        genderReset.isEnabled = false
+        applyFiltersButton.isEnabled = false
+        
+        
+    }
     
     @IBAction func applyFiltersAction(_ sender: UIButton) {
+        
         if aliveButton.isSelected {
-            status = "alive"
+            status = FilteringСriterias.Status.alive.rawValue
         } else if deadButton.isSelected {
-            status = "dead"
+            status = FilteringСriterias.Status.dead.rawValue
         } else if statusUnknownButton.isSelected {
-            status = "unknown"
+            status = FilteringСriterias.Status.unknown.rawValue
         }
         
         if femaleButton.isSelected {
-            gender = "female"
+            gender = FilteringСriterias.Gender.female.rawValue
         } else if maleButton.isSelected {
-            gender = "male"
+            gender = FilteringСriterias.Gender.male.rawValue
         } else if genderlessButton.isSelected {
-            gender = "genderless"
+            gender = FilteringСriterias.Gender.genderless.rawValue
         } else if genderUnknownButton.isSelected {
-            gender = "unknown"
+            gender = FilteringСriterias.Gender.unknown.rawValue
         }
-        
-        
-        let index =  (self.navigationController?.viewControllers.count ?? 0) - 2
-        let destinationVC = self.navigationController?.viewControllers[index]  as! CharactersViewController
-       
-        
-        var urlComponent = URLComponents(string: "https://rickandmortyapi.com/api/character/")
-        let queryItemGender = URLQueryItem(name: "gender", value: gender)
-        let queryItemStatus = URLQueryItem(name: "status", value: status)
-        urlComponent?.queryItems = [queryItemGender, queryItemStatus]
-       
-        destinationVC.router?.filterURLStore?.filterURL = urlComponent?.url?.absoluteString
-        self.navigationController?.popViewController(animated: true)
-        
+        router?.showFilteredCharacters()
         
     }
     
@@ -130,16 +108,18 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     }
     
     @IBAction func statusButtonAction(_ sender: UIButton) {
-        if sender.tag == 0 {
+        
+        switch sender.tag {
+        case 0:
             self.aliveLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.deadLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.statusUnknownLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.aliveButton.isSelected = true
-        self.deadButton.isSelected = false
-        self.statusUnknownButton.isSelected = false
+            self.aliveButton.isSelected = true
+            self.deadButton.isSelected = false
+            self.statusUnknownButton.isSelected = false
             statusReset.isEnabled = true
             applyFiltersButton.isEnabled = true
-        } else if sender.tag == 1 {
+        case 1:
             self.aliveLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.deadLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.statusUnknownLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -147,20 +127,33 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.deadButton.isSelected = true
             self.statusUnknownButton.isSelected = false
             statusReset.isEnabled = true
+        case 2:
+            self.aliveLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            self.deadLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            self.statusUnknownLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
+            self.aliveButton.isSelected = false
+            self.deadButton.isSelected = false
+            self.statusUnknownButton.isSelected = true
+            statusReset.isEnabled = true
             applyFiltersButton.isEnabled = true
-            } else if sender.tag == 2 {
-                self.aliveLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                self.deadLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                self.statusUnknownLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
-                self.aliveButton.isSelected = false
-                self.deadButton.isSelected = false
-                self.statusUnknownButton.isSelected = true
-                statusReset.isEnabled = true
-                applyFiltersButton.isEnabled = true
-                }
+        default:
+            return
+        }
     }
     
-
+    func setUI() {
+        self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.genderUnknownLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.femaleButton.isSelected = false
+        self.maleButton.isSelected = false
+        self.genderlessButton.isSelected = false
+        self.genderUnknownButton.isSelected = false
+        genderReset.isEnabled = false
+        applyFiltersButton.isEnabled = false
+    }
+    
     
     @IBAction func genderResetButtonAction(_ sender: UIButton) {
         
@@ -174,10 +167,12 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
         self.genderUnknownButton.isSelected = false
         genderReset.isEnabled = false
         applyFiltersButton.isEnabled = false
-     
+        
     }
     @IBAction func genderButtonAction (_ sender: UIButton) {
-        if sender.tag == 0 {
+        
+        switch sender.tag {
+        case 0:
             self.femaleLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -188,7 +183,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.genderUnknownButton.isSelected = false
             genderReset.isEnabled = true
             applyFiltersButton.isEnabled = true
-        } else if sender.tag == 1 {
+        case 1:
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.maleLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -199,7 +194,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.genderUnknownButton.isSelected = false
             genderReset.isEnabled = true
             applyFiltersButton.isEnabled = true
-        } else if sender.tag == 2 {
+        case 2:
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderlessLabel.textColor = #colorLiteral(red: 0.1472979188, green: 0.8754439354, blue: 0.4968790412, alpha: 1)
@@ -210,7 +205,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.genderUnknownButton.isSelected = false
             genderReset.isEnabled = true
             applyFiltersButton.isEnabled = true
-        } else if sender.tag == 3 {
+        case 3:
             self.femaleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.maleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.genderlessLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -221,12 +216,9 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
             self.genderUnknownButton.isSelected = true
             genderReset.isEnabled = true
             applyFiltersButton.isEnabled = true
+            
+        default:
+            return
         }
     }
-   
-  
-  func displayData(viewModel: Filter.Model.ViewModel.ViewModelData) {
-
-  }
-  
 }

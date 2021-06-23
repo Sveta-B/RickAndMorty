@@ -17,12 +17,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="439"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gNn-Bx-iqB">
-                        <rect key="frame" x="179" y="201" width="37" height="37"/>
-                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9P-vE-YSY">
                         <rect key="frame" x="0.0" y="0.0" width="395" height="439"/>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gNn-Bx-iqB">
+                        <rect key="frame" x="179" y="201" width="37" height="37"/>
+                    </activityIndicatorView>
                     <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB6-Nh-prx">
                         <rect key="frame" x="0.0" y="287" width="395" height="152"/>
                         <subviews>

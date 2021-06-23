@@ -8,7 +8,7 @@
 import UIKit
 
 struct Constants {
-   static let  minimumSpacing:CGFloat = 16
+    static let  minimumSpacing:CGFloat = 16
     static let hightTabBar = 44
     
     enum Storyboards: String{
@@ -28,8 +28,8 @@ struct Constants {
         case FilterViewController
     }
     enum NibName: String {
-    case CharacterCollectionViewCell
-    case CustomCollectionViewCell
+        case CharacterCollectionViewCell
+        case CustomCollectionViewCell
     }
     
     enum ReuseIdentifier: String {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol LocationsRoutingLogic {
     func navigateCharacters(characters: [String])
-
+    
 }
 
 class LocationsRouter: NSObject, LocationsRoutingLogic, URLPassingProtocol {
@@ -18,20 +18,20 @@ class LocationsRouter: NSObject, LocationsRoutingLogic, URLPassingProtocol {
     
     var urlStore: URLStoreProtocol?
     weak var viewController: LocationsViewController?
-  
-  // MARK: Routing
+    
+    // MARK: Routing
     func navigateCharacters(characters: [String]) {
         let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
-            guard let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? CharactersViewController else { return }
+        guard let charactersViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? CharactersViewController else { return }
         if characters.isEmpty {
             let storyboard = UIStoryboard(name: Constants.Storyboards.EmptyStoryboard.rawValue, bundle: nil)
-           let emptyViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EmptyViewController.rawValue)
+            let emptyViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EmptyViewController.rawValue)
             viewController?.navigationController?.show(emptyViewController, sender: nil)
             
         } else {
-            charactersViewController.router?.dataStore?.charactersURL = characters
-        charactersViewController.modalPresentationStyle = .fullScreen
-        viewController?.navigationController?.show(charactersViewController, sender: nil)
-    }
+            charactersViewController.router?.dataStore?.charactersURLs = characters
+            charactersViewController.modalPresentationStyle = .fullScreen
+            viewController?.navigationController?.show(charactersViewController, sender: nil)
+        }
     }
 }

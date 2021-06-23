@@ -12,18 +12,17 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
     var wightScreen = CGFloat()
     var hightScreen = CGFloat()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         collectionView.backgroundColor = #colorLiteral(red: 0.144208163, green: 0.1694156826, blue: 0.2115245759, alpha: 1) 
         wightScreen = view.bounds.size.width
         hightScreen = view.bounds.size.height
-      let layout = UICollectionViewFlowLayout()
-       collectionView.collectionViewLayout = layout
-       
+        let layout = UICollectionViewFlowLayout()
+        collectionView.collectionViewLayout = layout
+        
     }
-  
+    
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
         var countItemInRow: Int
         switch wightScreen {
@@ -40,7 +39,7 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         }
         let wight = (Int(wightScreen) - Int(Constants.minimumSpacing) * (countItemInRow + 1)) / countItemInRow
         let hight = Double(wight) * 1.4
-       return CGSize(width: wight, height: Int(hight))
+        return CGSize(width: wight, height: Int(hight))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -54,7 +53,5 @@ class ParentCollectionViewController: UICollectionViewController, UICollectionVi
         insets.right = Constants.minimumSpacing
         insets.bottom = Constants.minimumSpacing
         return insets
-    }
-
-    
+    } 
 }

@@ -8,25 +8,25 @@
 import UIKit
 
 enum Episodes {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case getEpisodes
-        case getMoreEpisodes
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case getEpisodes
+                case getMoreEpisodes
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentEpisodes(episode: [Episode])
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayEpisodes(episodeModel: EpisodesModel)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case presentEpisodes(episode: [Episode])
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-        case displayEpisodes(episodeModel: EpisodesModel)
-      }
-    }
-  }
 }
 
 struct EpisodesModel {
@@ -35,7 +35,7 @@ struct EpisodesModel {
         var date: String?
         var number: String?
         var name: String
-    
+        
     }
     var cells: [Cell]
 }

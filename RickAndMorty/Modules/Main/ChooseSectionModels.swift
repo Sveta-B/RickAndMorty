@@ -8,25 +8,24 @@
 import UIKit
 
 enum ChooseSection {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case getSections
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case getSections
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentSections(characters: String, locations: String, episodes: String)
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case  displaySections(sections: [Section])
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case presentSections(characters: String, locations: String, episodes: String)
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-        case  displaySections(sections: [Section])
-      }
-    }
-  }
-  
 }
 
 struct Sections: Codable {

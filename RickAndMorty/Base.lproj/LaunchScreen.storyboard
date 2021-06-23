@@ -18,7 +18,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rickandmorty" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-Mv-aWR">
                                 <rect key="frame" x="16" y="177.5" width="382" height="272"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="clipart220505" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-A1-4e5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cucumber" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-A1-4e5">
                                 <rect key="frame" x="87" y="481.5" width="240" height="307.5"/>
                             </imageView>
                         </subviews>
@@ -43,7 +43,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clipart220505" width="302.5" height="400"/>
+        <image name="cucumber" width="302.5" height="400"/>
         <image name="rickandmorty" width="640" height="272"/>
     </resources>
 </document>

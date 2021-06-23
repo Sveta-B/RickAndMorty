@@ -53,13 +53,11 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="disabled" image="icons8-unchecked-radio-button-48-2"/>
                                                 <state key="selected">
-                                                    <imageReference key="image" image="icons8-checked-radio-button-48" symbolScale="large"/>
+                                                    <imageReference key="image" image="checked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="highlighted" image="icons8-checked-radio-button-48"/>
                                                 <connections>
                                                     <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="OSY-Ce-Jdf"/>
                                                 </connections>
@@ -80,9 +78,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="BQ0-hc-Fvh"/>
                                                 </connections>
@@ -103,9 +101,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="statusButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="VT7-7c-D4u"/>
                                                 </connections>
@@ -155,9 +153,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="j3m-Di-9En"/>
                                                 </connections>
@@ -178,9 +176,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="75M-QR-pRU"/>
                                                 </connections>
@@ -201,9 +199,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="sOu-8N-lXe"/>
                                                 </connections>
@@ -224,9 +222,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="icons8-unchecked-radio-button-48-2" symbolScale="large"/>
+                                                    <imageReference key="image" image="unchecked-radio-button" symbolScale="large"/>
                                                 </state>
-                                                <state key="selected" image="icons8-checked-radio-button-48"/>
+                                                <state key="selected" image="checked-radio-button"/>
                                                 <connections>
                                                     <action selector="genderButtonAction:" destination="ANu-E8-ODi" eventType="touchUpInside" id="jsa-6P-ObB"/>
                                                 </connections>
@@ -295,8 +293,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-checked-radio-button-48" width="24" height="24"/>
-        <image name="icons8-unchecked-radio-button-48-2" width="24" height="24"/>
+        <image name="checked-radio-button" width="24" height="24"/>
+        <image name="unchecked-radio-button" width="24" height="24"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

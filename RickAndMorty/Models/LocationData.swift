@@ -12,15 +12,15 @@ struct LocationData: Codable {
     let results: [Location]
 }
 
-    struct InfoLocation: Codable {
-        let count, pages: Int
-        let next: String
-    }
-    
-    struct Location: Codable {
-        let id: Int
-        let name, type, dimension: String?
-        let residents: [String]?
-        }
+struct InfoLocation: Codable {
+    let count, pages: Int
+    let next: String
+}
+
+struct Location: Codable {
+    let id: Int
+    let name, type, dimension: String
+    let residents: [String]?
+}
 
 

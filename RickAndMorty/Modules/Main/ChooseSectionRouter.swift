@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ChooseSectionRoutingLogic {
-
+    
     func sendingURL(url: String, name: String)
 }
 
@@ -23,25 +23,25 @@ class ChooseSectionRouter: NSObject, ChooseSectionRoutingLogic {
     // MARK: ChooseSectionRoutingLogic
     
     func sendingURL(url: String, name: String) {
-     
+        
         if name == "Characters" {
             let storyboard = UIStoryboard(name: Constants.Storyboards.CharactersStoryboard.rawValue, bundle: nil)
             guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.CharactersViewController.rawValue)  as? CharactersViewController else { return }
-                    secondViewController.modalPresentationStyle = .fullScreen
+            secondViewController.modalPresentationStyle = .fullScreen
             viewController?.navigationController?.pushViewController(secondViewController, animated: true)
-            secondViewController.router?.urlStore?.stringURL = url
+            secondViewController.router?.urlStore?.charactersURL = url
         } else if name == "Locations" {
             let storyboard = UIStoryboard(name: Constants.Storyboards.LocationsStoryboard.rawValue, bundle: nil)
             guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.LocationsViewController.rawValue)  as? LocationsViewController else { return }
-                    secondViewController.modalPresentationStyle = .fullScreen
+            secondViewController.modalPresentationStyle = .fullScreen
             viewController?.navigationController?.pushViewController(secondViewController, animated: true)
-            secondViewController.router?.urlStore?.stringURL = url
+            secondViewController.router?.urlStore?.charactersURL = url
         } else {
             let storyboard = UIStoryboard(name: Constants.Storyboards.EpisodesStoryboard.rawValue, bundle: nil)
             guard let secondViewController = storyboard.instantiateViewController(identifier: Constants.IdRootViewControllers.EpisodesViewController.rawValue)  as? EpisodesViewController else { return }
-                    secondViewController.modalPresentationStyle = .fullScreen
+            secondViewController.modalPresentationStyle = .fullScreen
             viewController?.navigationController?.pushViewController(secondViewController, animated: true)
-            secondViewController.router?.urlStore?.stringURL = url
+            secondViewController.router?.urlStore?.charactersURL = url
         }
     }
 }

@@ -24,15 +24,16 @@ struct InfoCharacters: Codable {
 struct Character: Codable {
     let id: Int?
     let name: String
-    let status: Status?
-    let species: String?
-    let gender: Gender?
-    let image: String?
+    let status: Status
+    let species: String
+    let gender: Gender
+    let image: String
 }
 
 enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
+    case genderless = "Genderless"
     case unknown = "unknown"
 }
 

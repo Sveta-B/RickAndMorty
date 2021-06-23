@@ -34,7 +34,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeSecondLabel: UILabel!
     @IBOutlet weak var typeThirdLabel: UILabel!
     @IBOutlet weak var typeFourthLabel: UILabel!
-   
+    
     weak var delegate: CellDelegate?
     private var characters: [String]?
     override func awakeFromNib() {
@@ -42,7 +42,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 10
         view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     }
-
+    
     @IBAction func showСharacters(_ sender: UIButton) {
         guard let characters = characters else {
             return

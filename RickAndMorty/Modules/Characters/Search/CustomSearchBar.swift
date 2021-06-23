@@ -8,11 +8,11 @@
 import UIKit
 
 class CustomSearchController: UISearchController {
-
+    
     var viewController: (ParentCollectionViewController & CharactersDisplayLogic & UISearchBarDelegate & UISearchResultsUpdating)?
     
     override func viewDidLoad() {
-      super.viewDidLoad()
+        super.viewDidLoad()
         loadViewIfNeeded()
         searchResultsUpdater = viewController
         searchBar.placeholder =  "Введите имя"
@@ -23,6 +23,4 @@ class CustomSearchController: UISearchController {
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
-
 }

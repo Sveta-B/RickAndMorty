@@ -8,25 +8,25 @@
 import UIKit
 
 enum Locations {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case getLocations
-        case getMoreLocations
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case getLocations
+                case getMoreLocations
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentLocations(locations: [Location])
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayLocations(locationModel: LocationsModel)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case presentLocations(locations: [Location])
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-        case displayLocations(locationModel: LocationsModel)
-      }
-    }
-  }
 }
 
 struct LocationsModel {
@@ -35,7 +35,7 @@ struct LocationsModel {
         var type: String?
         var dimension: String?
         var characters: [String]?
-    
+        
     }
     var cells: [Cell]
 }
